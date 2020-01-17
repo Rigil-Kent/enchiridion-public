@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140898840-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-140898840-1');
+    </script>
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="msvalidate.01" content="E11C154B6A78614C57F4BBEAA7A3F634" />
+    <meta name="yandex-verification" content="ce57abaa44feecca" />
+    <meta name="description" content="{% if title %}{{ title }} | {% endif %} Professional, secure web design and development based in Baltimore. Take control of your brand. Get a free quote!">
+    <meta name ="author" content="Bryan Bailey">
+    <meta name="keywords" content="Bryan Bailey, freelance, web designer, web developer, seo, website design, website builder, maryland web design, web design, website developer, social media, game developer, portfolio, entreprenuer, baltimore, baltimore city, baltimore county, dundalk, canton, branding, business solutions, musician, pianist, bassist">
+    <meta property="og:url" content="https://www.brizzle.dev">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Brizzle.Dev | Bryan Bailey Baltimore, Maryland Web Designer and Web Developer">
+    <meta property="og:description" content="Bryan Bailey; freelance web designer and developer from Baltimore, Maryland. Here for all of your webdesign, software development and branding needs.">
+    
+    <meta property="og:image" content="https://www.brizzle.dev{{ url_for('static', filename="images/brizzle-logo.png")}}">
+    <meta property="og:image:width" content="700">
+    <meta property="og:image:height" content="200">
+    <meta property="fb:app_id" content="206574139389252">
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@zetsuboubrizzle" />
+    <meta name="twitter:creator" content="@zetsuboubrizzle" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/portfolio.css') }}" type="text/css">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/brizzle.js') }}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Just+Another+Hand" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="canonical" href="{{ url_for('main.index') }}">
+    {% block title %}
+    <title>{% if title %} {{ title }} | {% endif %}Bryan Bailey - Web Developer</title>
+    {% endblock %}
+    {% block scripts %}
+        {{ moment.include_jquery() }}
+        {{ moment.include_moment() }}
+        {{ pagedown.include_pagedown() }}
+    {% endblock %}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+  </head>
+  <body>
+  {% include 'main/core/announcements.html' %}
+  {% include 'main/core/nav.html' %}
+      {% block content %}
+      {% endblock content %}
+
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      
+      <script type="text/javascript">var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode:"9a7ff75f400e5e22efb4accbee52ca1692ec060b8636457c5a18fc16f618cc45", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.com/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);</script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <script type="text/javascript">
+
+      window.setTimeout(function() {
+        $("#alert_message").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+        });
+      }, 3000);
+      </script>
+
+      <section class="container-fluid bg-info text-center text-white py-5">
+        <div class="row">
+          <div class="col">
+            <span class="text-center fa fa-gamepad fa-4x"></span>
+            <h2>Play A Game of <strong>Tetris</strong>!</h2>
+            <p class="display-4">&darr; - &uarr; - &larr; - &larr; - a &rarr; - &darr;</p>
+            <small>...or click <a href="{{ url_for('main.index') }}" alt="Tetris" title="Tetris">here</a> if you're not quite that nerdy!</small>
+          </div>
+        </div>
+      </section>
+ 
+    {% include 'main/core/footer.html' %}
+  </body>
+
+</html>

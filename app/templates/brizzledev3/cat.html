@@ -1,0 +1,76 @@
+{% extends 'brizzledev3/base.html' %}
+{% import 'brizzledev3/macros.html' as macros %}
+{% block content %}
+
+
+    <!--================Home Banner Area =================-->
+    <section class="banner_area ">
+            <div class="banner_inner overlay d-flex align-items-center">
+                <div class="container">
+                    <div class="banner_content text-left">
+                        <div class="page_link">
+                            <a href="{{ url_for('main.index') }}" alt="Back Home" title="Back Home | Brizzle.dev Web Development">Home</a>
+                            <a href="{{ url_for('main.blog') }}" alt="Brizzle.dev Blog" title="Brizzle.dev Blog | All Posts">Blog</a>
+                            <a href="{{ url_for('main.category', name=name) }}" alt="Brizzle.dev Blog | {{ name }}" title="Cagorized: {{ name }}">Cagorized: {{ name }}</a>
+                        </div>
+                        <h2>Some Thoughts | <span class="text-primary">Blog</span></h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+
+    <!--================Blog Area =================-->
+    <section class="blog_area section-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="blog_left_sidebar">
+                        {% for post in posts %}
+                        <article class="row blog_item">
+                            <div class="col-md-3">
+                                <div class="blog_info text-right">
+                                    <div class="post_tag">
+                                        <ul class="list">
+                                            <li>Filed Under:</li>
+                                            {% for tag in post.tags %}
+                                            <li><a href="{{ url_for('main.tag', name=tag.name) }}" alt="Brizzle.dev Blog | {{ tag.name }}" title="Posts Tagged: {{ tag.name }}">{{ tag.name }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                    <ul class="blog_meta list">
+                                        <li><a href="" alt="Author: {{ post.author.first_name }} {{ post.author.last_name }}" title="Author: {{ post.author.first_name }} {{ post.author.last_name }}">{{ post.author.first_name }} {{ post.author.last_name }}<i class="lnr lnr-user"></i></a></li>
+                                        <li><a href="">{{ moment(post.timestamp).format('LL') }}<i class="lnr lnr-calendar-full"></i></a></li>
+                                        {% if comments_enabled %}
+                                        <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="blog_post">
+                                    <img src="{{ url_for('static', filename='uploads/blog/' + post.featured_image) }}" alt="{{ post.title }}" title="{{ post.title }}">
+                                    <div class="blog_details">
+                                        <a href="{{ url_for('main.post', permalink=post.permalink) }}" alt="{{ post.title }}" title="{{ post.title }}">
+                                            <h2>{{ post.title }}</h2>
+                                        </a>
+                                        <p>{{ post.summary }}</p>
+                                        <a href="{{ url_for('main.post', permalink=post.permalink) }}" alt="View More: {{ post.title }}" title="View More: {{ post.title }}" class="blog_btn">View More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    
+                        {{ macros.pagination_widget(pagination, 'main.category', name=name) }}
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    {% include 'brizzledev3/sidebar.html' %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================Blog Area =================-->
+
+    {% endblock %}

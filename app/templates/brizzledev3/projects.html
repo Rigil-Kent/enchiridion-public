@@ -1,0 +1,66 @@
+{% extends 'brizzledev3/base.html' %}
+{% block content %}
+
+	<!--================Home Banner Area =================-->
+	<section class="banner_area ">
+		<div class="banner_inner overlay d-flex align-items-center">
+			<div class="container">
+				<div class="banner_content text-left">
+					<div class="page_link">
+						<a href="{{ url_for('main.index') }}">Home</a>
+						<a href="{{ url_for('main.projects') }}">Projects</a>
+					</div>
+					<h2>Projects</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Home Banner Area =================-->
+
+	<!--================ Start Project Details Area =================-->
+	<section class="project-details section-gap">
+		<div class="container">
+            {% for project in projects %}
+			<div class="row mb-4">
+				<div class="col-lg-6 col-md-6">
+					<div class="service-img">
+						<img class="img-fluid" src="{{ url_for('static', filename='uploads/projects/' + project.featured_image) }}" alt="{{ project.name }} featured image" title="{{ project.name }} featured image">
+					</div>
+				</div>
+				<div class="col-lg-5 offset-lg-1 col-md-6">
+					<!-- single service -->
+					<div class="single-details">
+						<h4>{{ project.name }}</h4>
+						<p>{{ project.summary|safe }}</p>
+
+						<ul class="list">
+                            {% if project.client %}
+                            <li><span>Client</span>: {{ project.client }}</li>
+                            {% endif %}
+                            {% if project.website %}
+                            <li><span>Website</span>: {{ project.website }}</li>
+                            {% endif %}
+                            {% if project.completed %}
+                            <li><span>Completed</span>: {{ moment(project.completed).format('LL') }}</li>
+                            {% endif %}
+                        </ul>
+                        {% if project.shareable %}
+						<ul class="social-links">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-behance"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                        {% endif %}
+                        <a href="{{ url_for('main.project', slug=project.slug) }}" class="btn btn-success btn-user">Details</a>
+					</div>
+				</div>
+            </div>
+            
+            {% endfor %}
+		</div>
+	</section>
+	<!--================ End Project Details Area =================-->
+
+{% endblock content %}

@@ -1,0 +1,94 @@
+<!--================ start footer Area  =================-->
+<footer class="footer-area section_gap">
+        <div class="container">
+            <div class="row footer-top">
+                <div class="col-lg-{% if feed %}3{% else %}6{% endif %}  col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>About Bryan</h6>
+                        <p>
+                            Bryan is a <span class="text-primary">Baltimore, Maryland</span> based Systems Administrator turned Web Developer with game industry experience.
+                        </p>
+                    </div>
+                </div>
+
+                {% if main_pages %}
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Navigation Links</h6>
+                        <div class="row">
+                            <ul class="col footer-nav">
+                                <li><a href="{{ url_for('main.index') }}" alt="Home | Back to Brizzle.dev/" title="Home | Brizzle.dev/">Home</a></li>
+                            </ul>
+                            <ul class="col footer-nav">
+                                <li><a href="{{ url_for('main.blog') }}" alt="Brizzle.dev Blog | Some Thoughts">Blog</a></li>
+                                <li><a href="{{ url_for('main.contact') }}" alt="Contact Bryan @ brizzle.dev" title="Get In Touch With Bryan">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="col-lg-{% if main_pages %}3{% else %}6{% endif %}  col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Request A Saves-All-Comics Invite</h6>
+                        <p>This application is meant for demo purposes only and will not be released for public use. Support your favorite writers &amp; artists.</p>
+                        <div class="" id="mc_embed_signup">
+
+                            <form 
+                             method="POST" class="form-inline">
+                             {{ req.hidden_tag() }}
+
+                                <div class="d-flex flex-row">
+                                    {{ req.first_name(class="form-control mr-1", placeholder="Enter First Name", onfocus="this.placeholder = ''", onblur="this.placeholder = 'Enter First Name '", required="")}}
+                                    {{ req.email(class="form-control", placeholder="Enter Email", onfocus="this.placeholder = ''", onblur="this.placeholder = 'Enter Email '", required="")}}
+
+
+                                    <button type="submit" name ="request" class="click-btn btn btn-default" onclick="disableinput()">
+                                        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="info"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3  col-md-6 col-sm-6">
+                    {% if feed %}
+                    <div class="single-footer-widget mail-chimp">
+                        <h6 class="mb-20">Instafeed</h6>
+                        <ul class="instafeed d-flex flex-wrap">
+                            <li><img src="{{ url_for('static', filename='brizzledev/img/instagram/i1.jpg') }}" alt=""></li>
+                            <li><img src="{{ url_for('static', filename='brizzledev/img/instagram/i2.jpg') }}" alt=""></li>
+                            <li><img src="{{ url_for('static', filename='brizzledev/img/instagram/i3.jpg') }}" alt=""></li>
+                            <li><img src="{{ url_for('static', filename='brizzledev/img/instagram/i4.jpg') }}" alt=""></li>
+                            <li><img src="{{ url_for('static', filename='brizzledev/img/instagram/i5.jpg') }}" alt=""></li>
+                            <li><img src="{{ url_for('static', filename='brizzledev/img/instagram/i6.jpg') }}" alt=""></li>
+                            <li><img src="{{ url_for('static', filename='brizzledev/img/instagram/i7.jpg') }}" alt=""></li>
+                            <li><img src="{{ url_for('static', filename='brizzledev/img/instagram/i8.jpg') }}" alt=""></li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom d-flex justify-content-between align-items-center flex-wrap text-center">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-lg-12">
+                        <div>
+                            <p class="footer-text m-0">
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="https://www.brizzle.dev" alt="Bryan Bailey | Baltimore Based Web Developer" title="Brizzle.dev | Web &amp; Application Development">Brizzle.Dev</a> 
+                            <div class="footer-social">
+                                <a href="https://www.facebook.com/the.brizzle" alt="Bryan Bailey | Facebook" title="Brizzle.dev Web Development @ Facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.twitter.com/zetsuboubrizzle" alt="Bryan Bailey | Twitter" title="Brizzle.dev Web Development @ Twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="https://github.com/Rigil-Kent" alt="Bryan Bailey | Github" title="Brizzle.dev Web Development @ GitHub"><i class="fa fa-github"></i></a>
+                                <a href="https://instagram.com/zanzetsukenbcb" alt="Bryan Bailey | Instagram" title="Brizzle.dev Web Development @ Instagram"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--================ End footer Area  =================-->

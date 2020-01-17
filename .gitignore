@@ -1,0 +1,11 @@
+env
+migrations
+__pycache__
+*.db
+*.cbr
+.env
+demo.*
+utilities*
+.vscode
+sudo 
+scss

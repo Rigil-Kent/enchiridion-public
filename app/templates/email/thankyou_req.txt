@@ -1,0 +1,10 @@
+Thank you {{ name }} for your interest in Saves-All-Comics. 
+
+Support this tool by referring driven folk who might be in need of a website or web application. 
+
+Please keep in mind that this is tool is not intended for use by the general public and no guarantees are made that access will be granted.
+
+
+Bryan Bailey
+www.brizzle.dev
+https://gitub.com/Rigil-Kent

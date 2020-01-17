@@ -1,0 +1,11 @@
+{
+    "template_dir": "app/sitebuilder/templates",
+    "title": "{}", 
+    "code_link": "https://github.com/Rigil-Kent/{}",
+    "description": "Generated with Sitebuilder 0.1 by brizzle.dev",
+    "author": "Bryan Bailey<bryan.bailey@brizzle.dev",
+    "url": "https://www.brizzle.dev",
+    "identifier": "{}",
+    "pallet": ["", "", "", "", ""]
+    
+}

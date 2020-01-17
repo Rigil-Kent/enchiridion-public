@@ -1,0 +1,32 @@
+{% extends 'core/post_base.html' %}
+{% block content %}
+<main class="container mt-5 pb-5">
+    <section class="row px-0 paper" >
+
+            <div class="col">
+                <h1 class="text-success font-weight-bold">{{ post.title }}</h1>
+                <ul class="list-inline">
+                    <li class="list-inline-item">By {{ post.author.full_name }}</li>
+                    <li class="list-inline-item"><small><span class="fa fa-calendar"></span> {{ moment(post.timestamp).format('LLL') }}</small></li>
+                    <li class="list-inline-item">
+                        <div class="fb-share-button" data-href="https://www.brizzle.dev{{ url_for('blog_post', slug=post.slug) }}" data-layout="button_count">
+                        </div>
+                    </li>
+                </ul>
+                
+                <div class="col mx-auto-md">
+                
+                </div>
+
+                <div class="col">
+                    <p><img class=" img-fluid float-left px-2" width="300px" src="{{ url_for('static', filename='uploads/' + post.featured_img) }}" alt="{{ post.title }}" title="{{ post.title }}">
+                    {{ post.body|safe }} 
+                    </p>
+                    <div class="fb-comments" data-href="https://www.brizzle.dev{{ url_for('blog_post', slug=post.slug) }}" data-width="100%" data-numposts="15"></div>
+               
+               </div>
+
+            </div>
+    </section>
+</main>
+{% endblock content %}

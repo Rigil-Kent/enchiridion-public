@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% block content %}
+{% if posts %}
+<div class="container">
+<h1 class="success">Brizzle Dev Blog</h1>
+{% for post in posts %}
+<div class="row pt-4">
+    <div class="{{ loop.cycle('col-md-7', 'col-md-7 order-md-2') }}">
+        <h2 class="blog-heading"><a href="{{ url_for('blog_post', slug=post.slug) }}" alt="{{ post.title }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+        <h5 class="text-muted">{{ moment(post.timestamp).format('LLL') }}</h5>
+        {% set summary = post.body[0:275] %}
+        <p class="lead blog-body">{{ summary | safe }}<a href="{{ url_for('blog_post', slug=post.slug) }}" alt="{{ post.title }}" title="{{ post.title }}">[read more]</a></p>
+    </div>
+
+    <div class="{{ loop.cycle('col-md-5', 'col-md-5 order-md-1') }}">
+        <img class="blog-image img-fluid mx-auto" src="{{ url_for('static', filename="uploads/" + post.featured_img)}}" alt="{{ post.title }}" title="{{ post.title }}">
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,245 @@
+{% extends 'brizzledev3/base.html' %}
+{% block content %}
+	<!--================ start banner Area =================-->
+	<section class="home-banner-area">
+		<div class="container">
+			<div class="row justify-content-end fullscreen">
+				<div class="col-lg-6 col-md-12 home-banner-left d-flex fullscreen align-items-center">
+					<div>
+						<h1 class="">
+							Hello! I'm <span>Bryan Bailey</span>. <br>
+							Web Developer, Systems Administrator, <br>
+							<span>Musician</span>.
+						</h1>
+						<p class="mx-auto mb-40">
+							I'm pretty good at building things using Python, HTML5, CSS3, JavaScript &amp; AWS. Check out my <a href="{{ url_for('main.savecomic') }}" target="_blank" alt="Saves-All-Comics" title="Saves-All-Comics | Online Comic Downloader">Saves-All-Comics</a> web application below!
+						</p>
+						<a href="{{ url_for('main.projects') }}" class="primary-btn" alt="Want To See More? | Bryan's Projects" title="Want To See More? | Bryan's Projects">Want To See More?</a>
+
+						<div class="d-flex align-items-center mt-60">
+							<a id="play-home-video" class="video-play-button" href="https://www.youtube.com/watch?time_continue=2v=5VuP_r4Btc4" alt="Saves-All-Comics On Youtube" title="Saves-All-Comics On Youtube">
+								<span></span>
+							</a>
+							<div class="watch_video">
+								<h5>Saves-All-Comics</h5>
+								<p>Watch A Live Demo</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-12 no-padding home-banner-right d-flex fullscreen align-items-end">
+					<img class="img-fluid" src="{{ url_for('static', filename='brizzledev/img/headerimg.png') }}" alt="Bryan Bailey | Web Developer">
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================ End banner Area =================-->
+
+
+
+	<!--================ Start Service Area =================-->
+	<section class="service-area section-gap">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-9 text-center">
+					<div class="section-title">
+						<h1>Absolutely <span>Stoked</span> to help build something with you</h1>
+						<p>Some things I'm pretty good at</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<!-- single-features -->
+				<div class="col-lg-3 col-sm-6 col-md-6">
+					<div class="single-service">
+						<div class="service-icon text-primary text-center">
+							<i class="fa fa-laptop fa-5x"></i>
+						</div>
+						<div class="service-content text-center">
+							<h4>Web &amp; Application Development</h4>
+							<p>Forged in the times before the web was pretty and up to date on recent standards. There is very little we can't turn into a web application these days. Let's try it!</p>
+						</div>
+					</div>
+				</div>
+				<!-- single-features -->
+				<div class="col-lg-3 offset-lg-1 col-sm-6 col-md-6">
+					<div class="single-service">
+						<div class="service-icon text-primary text-center">
+							<i class="fa fa-linux fa-5x"></i>
+						</div>
+						<div class="service-content text-center">
+							<h4>Systems Administration</h4>
+							<p>Network Operations Administrator with the bulk of my experience in enterprise game architecture. The frontline in keeping all of your games online and properly working. I fixed in-game problems before you even noticed a problem.</p>
+						</div>
+					</div>
+				</div>
+				<!-- single-features -->
+				<div class="col-lg-3 offset-lg-1 col-sm-6 col-md-6">
+					<div class="single-service">
+						<div class="service-icon text-primary text-center">
+							<i class="fa fa-music fa-5x"></i>
+						</div>
+						<div class="service-content text-center">
+							<h4>Music</h4>
+							<p>A pianist by trade with 25 years of playtime but have recently gone down the rabbit hole of Bass Guitar. Currently playing keyboard with the band K-otic.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================ End Service Area =================-->
+
+	<!--================ Start Video Area =================-->
+	<section class="video-sec-area">
+		<div class="container">
+			<div class="row justify-content-start align-items-center">
+				<div class="col-lg-6 video-left justify-content-center align-items-center d-flex">
+					<div class="overlay overlay-bg"></div>
+					<a id="play-home-video" class="video-play-button" href="https://www.youtube.com/watch?time_continue=2v=5VuP_r4Btc4" alt="Saves-All-Comics On Youtube" title="Saves-All-Comics On Youtube">
+						<span></span>
+					</a>
+				</div>
+				<div class="col-lg-5 offset-lg-1 video-right">
+					<h1>Giving Online Comics <br>
+						A Forever Home</h1>
+					<p>
+						As a father and someone who spends a lot of their free time learning new things, there isn't always time to sit at a desk reading online comics.
+						 Even worse, there are times where we don't have the net access to even visit the site. Fear not! With <a href="{{ url_for('main.savecomic') }}">Saves-All-Comics</a> you can archive digital comics 
+						 in a format that can be read offline. Now I can read my comics on my tablet in the Walmart Self-Checkout line.
+					</p>
+
+				</div>
+				<img class="img-fluid video-shape" src="{{ url_for('static', filename='brizzledev/img/video-bg-shape.png') }}" alt="Saves-All-Comics Video">
+			</div>
+			
+		</div>
+	</section>
+	<!--================ End video Area =================-->
+
+{% if portfolio %}
+	<!--================ Start Portfolio Service Area =================-->
+	<section class="portfolio-area section-gap">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="col-lg-6 col-md-6">
+					<div class="portfolio-main">
+						<h1>Recent Portfolio <br> Showcase</h1>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+							magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.</p>
+						<a href="#" class="primary-btn">View all Works</a>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<div class="active-gallery-carousel">
+						<!-- single gallery -->
+						<div class="single-gallery">
+							<img class="img-fluid" src="{{ url_for('static', filename='brizzledev/img/project/gallery1.jpg') }}" alt="">
+							<div class="gallery-content">
+								<p>Proper Guided Tour</p>
+								<h4>Santorini Island Dream <br>
+									Holiday and Fun <br>
+									Package</h4>
+							</div>
+							<div class="light-box">
+								<a href="{{ url_for('static', filename='brizzledev/img/project/gallery1.jpg') }}" class="img-popup">
+									<span class="lnr lnr-link"></span>
+								</a>
+							</div>
+						</div>
+						<!-- single gallery -->
+						<div class="single-gallery">
+							<img class="img-fluid" src="{{ url_for('static', filename='brizzledev/img/project/gallery2.jpg') }}" alt="">
+							<div class="gallery-content">
+								<p>Proper Guided Tour</p>
+								<h4>Santorini Island Dream <br>
+									Holiday and Fun <br>
+									Package</h4>
+							</div>
+							<div class="light-box">
+								<a href="{{ url_for('static', filename='brizzledev/img/project/gallery2.jpg') }}" class="img-popup">
+									<span class="lnr lnr-link"></span>
+								</a>
+							</div>
+						</div>
+						<!-- single gallery -->
+						<div class="single-gallery">
+							<img class="img-fluid" src="{{ url_for('static', filename='brizzledev/img/project/gallery3.jpg') }}" alt="">
+							<div class="gallery-content">
+								<p>Proper Guided Tour</p>
+								<h4>Santorini Island Dream <br>
+									Holiday and Fun <br>
+									Package</h4>
+							</div>
+							<div class="light-box">
+								<a href="{{ url_for('static', filename='brizzledev/img/project/gallery3.jpg') }}" class="img-popup">
+									<span class="lnr lnr-link"></span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================ End Portfolio Service Area =================-->
+{% endif %}
+
+
+	
+	<!--================ Start CTA Area =================-->
+	<section class="cta-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-7 col-md-12">
+					<h2>Want to build something cool together?</h2>
+					<p>I'm open to collaborating with anyone interested in games, music, finance, film. Check out my public <a href="https://github.com/Rigil-Kent" target="_blank">GitHub</a> projects &amp; shoot me a <a href="mailto://bryan.bailey@brizzle.dev&subject=let\'s%20collaborate!">email</a></p>
+					<a href="{{ url_for('main.contact') }}" class="primary-btn" alt="Get A Free Web Development Estimate" title="Get A Free Web Development Estimate">Get A Free Estimate</a>
+				</div>
+				<img src="{{ url_for('static', filename='emeraldcity.png') }}" alt="Follow The Yellow Brick Road To Success" class="cta-shape img-fluid">
+			</div>
+		</div>
+	</section>
+	<!--================ End CTA Area =================-->
+
+	<!--================ Start Blog Area =================-->
+	<section class="blog-area section-gap">
+		<div class="container">
+			<div class="row align-items-end justify-content-center">
+				<div class="col-lg-5 col-md-12 text-left">
+					<div class="section-title">
+						<h1>Some thoughts</h1>
+						<p>I'm occasionally known to have opinions and get excited about things.</p>
+					</div>
+				</div>
+				<div class="col-lg-5 col-md-12 offset-lg-2 text-right">
+					<div class="blog-btn">
+						<a href="{{ url_for('main.contact') }}" class="primary-btn" alt="Get A Free Development Quote">Let's Build Something Cool!</a>
+					</div>
+				</div>
+			</div>
+			<div class="row blog-inner justify-content-center">
+				{% for post in posts %}
+				<!-- single-blog -->
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="single-blog">
+						<div class="blog-thumb">
+							<img class="img-fluid" src="{{ url_for('static', filename='uploads/blog/' + post.featured_image) }}" alt="{{ post.title }}" title="{{ post.title }}">
+						</div>
+						<div class="blog-details">
+							<div class="blog-meta">
+								<span>{{ moment(post.timestamp).format('LL') }} | By {{ post.author.first_name }} {{ post.author.last_name }}</span>
+							</div>
+							<h5><a href="{{ url_for('main.post', permalink=post.permalink) }}"  title="{{ post.title }}">{{ post.title|capitalize }}</a></h5>
+							<p>{{ post.summary|safe }}</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+
+			</div>
+		</div>
+	</section>
+	<!--================ End Blog Area =================-->
+
+	{% endblock content %}

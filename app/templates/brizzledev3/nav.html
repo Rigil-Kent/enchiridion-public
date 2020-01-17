@@ -1,0 +1,53 @@
+<!--================ Offcanvus Menu Area =================-->
+<div class="side_menu">
+		<div class="logo">
+			<a href="{{ url_for('main.index') }}">
+				<img src="{{ url_for('static', filename='brizzle-logo.png') }}" class="img-fluid"  alt="">
+			</a>
+		</div>
+		<ul class="list menu-left">
+			<li>
+				<a href="{{ url_for('main.index') }}">Home</a>
+			</li>
+            {% if main_pages %}
+			<li>
+                {% for page in main_pages %}
+				<div class="dropdown">
+					<button type="button" class="dropdown-toggle" data-toggle="dropdown">
+						{{ page.name }}
+                    </button>
+                    {% if page.subpages %}
+					<div class="dropdown-menu">
+                        {% for sub in page.subpages %}
+                        <a class="dropdown-item" href="{{ url_for('page', slug=page.slug) }}">Blog</a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </li>
+            {% endif %}
+            {% if posts or latest_posts %}
+            <li>
+                <a href="{{ url_for('main.blog') }}">Blog</a>
+            </li>
+			{% endif %}
+			<li>
+				<a href="{{ url_for('main.projects') }}">Projects</a>
+			</li>
+			<li>
+				<a href="{{ url_for('main.contact') }}">Contact</a>
+			</li>
+		</ul>
+	</div>
+	<!--================ End Offcanvus Menu Area =================-->
+
+	<!--================ Canvus Menu Area =================-->
+	<div class="canvus_menu">
+		<div class="container">
+			<div class="toggle_icon" title="Menu Bar">
+				<span></span>
+			</div>
+		</div>
+	</div>
+	<!--================ End Canvus Menu Area =================-->

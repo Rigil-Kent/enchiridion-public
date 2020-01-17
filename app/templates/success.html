@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="web developer, web designer, freelance, maryland website development, web designer for hire, entrepreneur, baltimore website development, pianist, musician for hire">
+    <meta property="og:url" content="https://www.brizzle.dev">
+    <meta property="og:title" content="Brizzle.dev | Bryan Bailey, Baltimore, Maryland Web Developer">
+    <meta property="og:image" content="https://brizzle.dev{{ url_for('static', filename='brizzle-logo.png') }}">
+    <meta property="og:image:width" content="530">
+    <meta property="og:image:height" content="79">
+    <meta property="fb:app_id" content="206574139389252">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@zetsuboubrizzle" />
+    <meta name="twitter:creator" content="@zetsuboubrizzle" />
+    <!-- Font Awesome CSS -->
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
+
+    <title>Save All Comics!</title>
+  </head>
+  <body>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark col">
+          <a class="navbar-brand" href="{{ url_for('main.savecomic') }}"><i class="fas fa-save    "></i> Save All Comics!</a>
+          <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+              aria-expanded="false" aria-label="Toggle navigation"></button>
+          <div class="collapse navbar-collapse mx-auto" id="collapsibleNavId">
+              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="{{ url_for('main.savecomic') }}">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="https://github.com/Rigil-Kent/saveallcomics"><i class="fab fa-github"></i> Github</a>
+                  </li>
+                  {% if current_user.is_authenticated %}
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+                      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownId">
+                          <a class="dropdown-item" href="{{ url_for('account.index') }}">My Account</a>
+                          <a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout</a>
+                      </div>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+                  </li>
+                  {% endif %}
+              </ul>
+          </div>
+      </nav>
+
+
+      <div class="jumbotron jumbotron-fluid">          
+          <div class="jumbo-info p-5 text-center w-100">
+              <h1 class="display-3 pb-0 mb-0">Saves-All-Comics!</h1>
+              <h6 class="lead mt-0">Save &amp; Read online comics on your OWN time.</h6>
+          </div>
+      </div>
+
+
+    <div class="container-fluid  text-center">
+
+        <section class="row">
+          <div class="col">
+            <a href="{{ url_for('main.savecomic') }}">&laquo; Back Home</a> |
+            <a href="{{ url_for('account.mycomics') }}"> My Comics &raquo;</a>
+            <h1>Downloading {{ title }}</h1>
+            {% set img = title + '/' + cover %}
+            <img src="{{ url_for('static', filename='download/' + img) }}" class="img-fluid img-thumbnail" width="400px">
+          </div>
+          <div class="col form-group py-4">
+              <p class="lead">Thank you for using <a href="{{ url_for('main.index') }}" alt="Saves-All-Comics | Bryan Bailey" title="Saves-All-Comics | Bryan Bailey">Saves-All-Comics</a>! We are a totally <em>FREE</em> project without profit.</p>
+              {% set download = title + '/' + title + '.cbr' %}
+              <a class="btn btn-lg btn-success" role="button" href="{{ url_for('static', filename='download/' + download) }}">Download {{ title }}</a>
+              {% if description %}
+              <p class="lead text-info">{{ description|safe }}</p>
+              {% endif %}
+          </div>
+        </section>
+        
+        
+      <footer class="row">
+        <div class="col text-center">
+          <p>&copy; 2019 <a href="">Saveallcomics</a>. Some rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

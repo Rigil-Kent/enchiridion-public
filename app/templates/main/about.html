@@ -1,0 +1,173 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<main class="container-fluid map">
+    <div class="row map">
+        <div class="col-md-6 order-sm-1 page-heading px-4">
+            <div class="title pb-4">
+                <h1 class="my-0 py-0 font-weight-bold display-4 text-success">Bryan Bailey</h1>
+            </div>
+            
+            <div class="row">
+                <div class="col-md">
+                    <h5 class="text-muted">A.A. Network Administrator</h5>
+                    <h5 class="text-success"><strong>Core Web Skills</strong></h5><br>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><span class="fab fa-html5 fa-3x"></span></li>
+                        <li class="list-inline-item"><span class="fab fa-css3 fa-3x"></span></li>
+                        <li class="list-inline-item"><span class="fab fa-python fa-3x"></span></li>
+                        <li class="list-inline-item"><span class="fab fa-github fa-3x"></span></li>
+                        <li class="list-inline-item"><span class="fab fa-aws fa-3x"></span></li>
+                        <li class="list-inline-item"><span class="fab fa-bootstrap fa-3x"></span></li>
+                        <li class="list-inline-item"><span class="fab fa-digital-ocean fa-3x"></span></li>
+                        <li class="list-inline-item"><span class="fab fa-stripe fa-3x"></span></li>
+                    </ul>
+                    <p>My goal is to work with people and businesses who are looking to take charge of their web presence. There is no doubt that control of your brand in this day in age is of the <strong>utmost</strong> importance and there are exciting opportunities in the web and digital space for people to run thriving businesses. I want to educate people on these business platforms so there are more accessible to people with good ideas and those offering great services or products.</p> <p>Honed my skills working with the <strong>State of Maryland</strong> and <strong>Bethesda Game Studios</strong> in network and systems administration. I have decided to take the skills I have gained and offer them to people that have fantastic ideas and products but lack the technical skill to explore options and opportunities through the web. I am passionate about helping others pursue their goals. My design style is <strong>professional</strong>, <strong>minimalistic</strong> and <strong>clean</strong>.</p>
+                    <img src="{{ url_for('static', filename='images/me.jpg') }}" class="img-fluid" alt="Bryan Bailey | Web Designer" title="Bryan Bailey | Web Designer">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6 order-sm-2">
+            <h2 class="pb-0 text-success">Services</h2>
+            <small class="text-muted">Select a category to reveal more information about what I can do to help your business</small>
+
+            <div class="accordion pt-3" id="accordionExample">
+  <div class="card">
+    <div class="card-header py-0" id="webGraphicHead">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed text-success" type="button" data-toggle="collapse" data-target="#webGraphic" aria-expanded="true" aria-controls="webGraphic">
+          <span class="fa fa-paint-brush"></span> Graphic &amp; Web Design
+        </button>
+      </h2>
+    </div>
+
+    <div id="webGraphic" class="collapse" aria-labelledby="webGraphicHead" data-parent="#accordionExample">
+      <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-success">Website Design</h2>
+                <p class="text-muted">Having a website with a 100% unique look that is also simple and intuitive for customers to navigate can be a huge competitive advantage. If you aren't interested in using an existing theme or template, I wil develop something new and unique for your business. All of my websites are built to be <strong>mobile first</strong> which Google rewards with better search results over time.</p>
+                <span class="far fa-check-square"></span> <strong class="text-success">How can I help?</strong>
+                <ul>
+                    <li>Initial consultation</li>
+                    <li><strong>5</strong> design revisions</li>
+                    <li>Site mockups, layout and interaction design</li>
+                    <li>All file formats and original mockup files</li>
+                    <li>Cloud file storage</li>
+                    <li>Comprehensive site map</li>
+                </ul>
+            </div>
+
+            <div class="col-md-6">
+              <h2 class="text-success">Logo Design &amp; Brand Identity</h2>
+              <p class="text-muted">Your logo speaks volumes about your business and will be the focal point for how your customer base sees you. A solid design that matches your company's mission will relay to customers what you stand for and set the tone for how they relate to you. <strong>I will create a logo and brand image that best matches your company's mission</strong></p>
+              <span class="far fa-check-square"></span> <strong class='text-success'>How can I help?</strong>
+              <ul>
+                  <li>Initial consultation</li>
+                  <li><strong>10</strong> design revisions</li>
+                  <li>All file formats and original photoshop/Illustrator files</li>
+                  <li>Cloud file storage</li>
+              </ul>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header py-0" id="devHeading">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed text-success" type="button" data-toggle="collapse" data-target="#webDev" aria-expanded="false" aria-controls="webDev">
+          <span class="fas fa-code-branch"></span> Web Development
+        </button>
+      </h2>
+    </div>
+    <div id="webDev" class="collapse" aria-labelledby="devHeading" data-parent="#accordionExample">
+      <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-success">Simple, Speedy Site Development</h2>
+                <p class="text-muted">Choose one of my custom designs or a number of different templates to turn your vision into a functioning live product. I use <strong>front end development best practices</strong> with a <strong>mobile first methodology</strong> to make sure your business has the best chance possible.</p>
+                <span class="far fa-check-square"></span> <strong class="text-success">How can I help?</strong>
+                <ul>
+                    <li>Live website with optional landing page</li>
+                    <li>Informational sub pages (About, Team, Contact, etc.)</li>
+                    <li>Contact form implementation</li>
+                    <li>Email newsletter sign up form implementation</li>
+                    <li>Social media linkage and integration</li>
+                    <li>Contact information</li>
+                </ul>
+            </div>
+
+            <div class="col-md-6">
+                <h2 class="text-success">Content Management System Development</h2>
+                <p class="text-muted">For an end product that supports frequent context updates, trackable email marketing campaigns, event monitorying, news announcements, etc, I will build a completely customized solution best suited toward your business needs. <strong>A Content Management System allows you to implement more complex business ventures</strong>. We can easiy turn your web front end into an ecommerce solution or give you the ability to take orders through your website and track even more complex data about your customer base.</p>
+                <span class="far fa-check-square"></span> <strong class="text-success">How can I help?</strong>
+                <ul>
+                    <li><strong>Blogging</strong> functionality (drastically helps with SEO)</li>
+                    <li><strong>E-commerce</strong> functionality</li>
+                    <li><strong>Event calendar</strong> implementation</li>
+                    <li>Location functionality</li>
+                    <li>Plugin development</li>
+                </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header py-0" id="seoHeading">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed text-success" type="button" data-toggle="collapse" data-target="#seo" aria-expanded="false" aria-controls="seo">
+          <span class="fas fa-search"></span> SEO Optimization
+        </button>
+      </h2>
+    </div>
+    <div id="seo" class="collapse" aria-labelledby="seoHeading" data-parent="#accordionExample">
+      <div class="card-body">
+        <h2 class="text-success">Organic Search Improvement</h2>
+        <p class="text-center">Help your business get better results with Google search. This is an important aspect of your brands online marketing strategy and you <strong>should</strong> be staying current. How, why and where you show up on Google search is extremely important for any business. <strong>I can improve your internet visibility</strong></p>
+        <span class="far fa-check-square"></span> <strong class='text-success'>How can I help?</strong>
+        <ul>
+            <li><strong>Google Search Console</strong> setup</li>
+            <li><strong>Google Analytics</strong> implementation</li>
+            <li><strong>Sitemap</strong> creation and submission</li>
+            <li><strong>Meta tags</strong> for <strong>description</strong>, <strong>title</strong>, and <strong>keyword optimization</strong></li>
+            <li><strong>Content keyword</strong> implementation</li>
+            <li>Appropriate image <strong>alt</strong> &amp; <strong>title</strong> tagging</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2 class="text-success">Pay as You Go Support</h2>
+        <small class="text-muted">Post development relationships with my clients are <strong>extremely</strong> important to me. However, the demand for my continued services may drop off as your business stablizes with your shiny new web product. I offer <strong>free</strong> fixes for any issues that might pop up and a <strong>pay as you go</strong> policy for any new features.</small>
+    </div>
+
+    <div class="col-md-6">
+        <h2 class="text-success">Hosting</h2>
+        <small class="text-muted">Where your site <em>lives</em> is important from a <strong>performance</strong> and <strong>security</strong> standpoint. That said, I prefer to work exclusively with Amazon Web Services with new hosting accounts as they offer a secure and flexible set of services that will be <strong>100%</strong> under your control. I will program your infrastructure so that there's never a lapse in service. I can include domain name and hosting services into your estimate.</small>
+    </div>
+
+    <div class="col-md-6">
+        <h2 class="text-success">Social Media &amp; Website Management</h2>
+        <p class="text-muted">Don't have the time to put in to managing website updates or social media marketing campaigns? <a href="{{ url_for('index') }}#contact">Let me do it for you</a> so that you can free up your time for your higher priority business tasks.</p>
+    </div>
+</div>
+        </div>
+    </div>
+</main>
+
+
+<div class="container-fluid map">
+    <div class="row map">
+        <div class="col map">
+            <iframe class="embed-responsive" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12353.195773793399!2d-76.58558161353331!3d39.28147047220999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c8038a31c715cd%3A0xb12e3d38582f6f20!2sCanton%2C+Baltimore%2C+MD!5e0!3m2!1sen!2sus!4v1556202796054!5m2!1sen!2sus" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+{% endblock content %}

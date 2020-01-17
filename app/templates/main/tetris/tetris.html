@@ -1,0 +1,26 @@
+{% extends 'core/tetris_base.html' %}
+{% block content %}
+<div class="container text-center">
+<div class="row py-2">
+
+  <div class="order-sm-2 col-sm-3 h-25 my-5 ml-1 border border-light bg-light rounded">
+     <div id="score"></div>
+     <h4>Controls</h4>
+     <ul class="list-unstyled">
+       <li class="list-item"><img class="img-fluid" src="{{ url_for('static', filename='images/space.png') }}"> - Rotate</li>
+       <li class="list-item"><img src="{{ url_for('static', filename='images/arrow-1.png') }}" width="32px;"> <img src="{{ url_for('static', filename='images/arrow-2.png') }}" width="32px;"> <img src="{{ url_for('static', filename='images/arrow-4.png') }}" width="32px;"> - Movement</li>
+     </ul>
+  </div>
+
+  <div class="order-sm-1 col-sm-8 t pt-2">
+    
+    <canvas class="mt-5 pt-5" id="tetris" width="240" height="400"></canvas>
+      <!--<script src="{{ url_for('static', filename='js/gameObject.js') }}"></script>-->
+    <script src="{{ url_for('static', filename='js/tetris.js') }}"></script>
+  </div>
+
+  
+</div>
+</div>
+<br>
+{% endblock content %}

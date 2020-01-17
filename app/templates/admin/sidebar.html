@@ -1,0 +1,172 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion fixed" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url_for('main.index') }}">
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-scroll"></i>
+          </div>
+          <div class="sidebar-brand-text mx-3">Enchiridion<sup>3</sup></div>
+        </a>
+  
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+  
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ url_for('account.index')}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+        </li>
+
+        {% if current_user.is_authenticated %}
+
+        <div class="sidebar-heading mb-3">
+          Welcome, <strong>{{ current_user.first_name }}!</strong>
+        </div>
+
+        {% endif %}
+  
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        {% if current_user.is_authenticated and current_user.role.name  == 'Administrator' or current_user.role.name == "Moderator" %}
+  
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          Content
+        </div>
+  
+        <!-- Nav Item - Posts  Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="far fa-fw fa-newspaper"></i>
+            <span>Posts</span>
+          </a>
+          <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Blog Utilities:</h6>
+              <a class="collapse-item" href="{{ url_for('account.post_create') }}">New Post</a>
+              <a class="collapse-item" href="{{ url_for('account.posts') }}">Manage Posts</a>
+              <a class="collapse-item" href="{{ url_for('account.post_tags') }}">Manage Tags</a>
+              <a class="collapse-item" href="{{ url_for('account.post_cats') }}">Manage Categories</a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Nav Item - Projects  Collapse Menu -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProjects" aria-expanded="true" aria-controls="collapseProjects">
+            <i class="far fa-fw fa-newspaper"></i>
+            <span>Projects</span>
+          </a>
+          <div id="collapseProjects" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Project Utilities:</h6>
+              <a class="collapse-item" href="{{ url_for('account.project_create') }}">New Project</a>
+              <a class="collapse-item" href="{{ url_for('account.projects') }}">Manage Projects</a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Pages</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Page Management:</h6>
+                    <a class="collapse-item" href="{{ url_for('account.page_create') }}">New Page</a>
+                    <a class="collapse-item" href="{{ url_for('account.pages') }}" alt="Manage your Pages" title="Manage Pages">Manage Pages</a>
+                    <div class="collapse-divider"></div>
+                    <div class="collapse-header">Pages</div>
+                    {% if pages %}
+                      {% for page in pages %}
+                      <a class="collapse-item" href="{{ url_for('main.page', slug=page.slug) }}" alt="{{ page.name }}" title="{{ page.name }}">{{ page.name }}</a>
+                      {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Users -->
+        
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedia" aria-expanded="true" aria-controls="collapseMedia">
+              <i class="fas fa-fw fa-image"></i>
+              <span>Media</span></a>
+              <div id="collapseMedia" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <h6 class="collapse-header">Manage:</h6>
+                  <a class="collapse-item" href="{{ url_for('account.media_upload') }}">Upload File</a>
+                  <a class="collapse-item" href="{{ url_for('account.media') }}">All Media</a>
+                </div>
+              </div>
+        </li>
+  
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          Addons &amp; Settings
+        </div>
+  
+        
+  
+        <!-- Nav Item - Users -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
+              <i class="fas fa-fw fa-journal-whills"></i>
+              <span>Users</span></a>
+              <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <h6 class="collapse-header">Manage:</h6>
+                  <a class="collapse-item" href="{{ url_for('account.users') }}">Active Users</a>
+                  <a class="collapse-item" href="{{ url_for('account.banned') }}">Banned Users</a>
+                  <a class="collapse-item" href="{{ url_for('account.invite') }}">Manage Invitations</a>
+                </div>
+              </div>
+          </li>
+        {% endif %}
+
+  
+        <!-- Comic Saver - Management -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComic" aria-expanded="true" aria-controls="collapseComic">
+            <i class="fas fa-fw fa-journal-whills"></i>
+            <span>Save All Comics</span></a>
+            <div id="collapseComic" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Manage:</h6>
+                <a class="collapse-item" href="{{ url_for('account.invite') }}">Invitation Codes</a>
+                <a class="collapse-item" href="{{ url_for('account.mycomics') }}">My Comics</a>
+              </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Settings -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Settings</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Custom Components:</h6>
+                    <a class="collapse-item" href="{{ url_for('account.settings') }}">Site Settings</a>
+                </div>
+            </div>
+        </li>
+  
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+  
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+  
+      </ul>
+      <!-- End of Sidebar -->

@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<section class="jumbotron container-fluid text-center">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-1 text-success">Specializing in website development services for small business.</h1>
+            <p>Are you an artist, business owner or entrepreneur who has a ton of ideas but little to no knowledge when it comes to the web? Let me help get you educated! While my clients represent unrelated industries, all of my projects start with a <strong>user centric</strong> approach. Understanding how your target audience interacts online is <strong>key</strong> to ensuring the success of any internet campaign.</p>
+            <small class="text-muted">Interested in what this might cost?</strong><br>
+            <a href="{{ url_for('index') }}#contact" class="btn btn-success my-2">Request A Quote!</a>
+        </div>
+    </div>
+</section>
+
+
+<section class="album container-fluid">
+    <div class="row">
+
+        {% if projects %}
+        {% for project in projects %}
+        {% if project.portfolio %}
+        <div class="col-md-5">
+            <div class="card mb-4 box-shadow price">
+                <img class="card-img-top border-bottom" src="{{ url_for('static', filename='uploads/' + project.featured_img) }}" alt="{{ project.title }}" title="{{ project.title }}" height="200px" width="100px">
+                <div class="card-body">
+                    <h1 class="text-success">{{ project.title }}</h1>
+                    <p class="card-text">{{ project.details[:256] | safe }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{{ url_for('project', slug=project.slug) }}">View</a>
+                        </div>
+                        <small class="text-muted">{{ moment(project.timestamp).format('LLL') }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+
+
+    </div>
+</section>
+
+
+<section class="container-fluid bg-success text-center text-white py-5">
+    <h2>Want More?</h2>
+    <p>I have more examples of front-end and back-end development. If you are looking for more examples in a particular design category, just ask.</p>
+</section>
+{% endblock content %}

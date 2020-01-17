@@ -1,0 +1,88 @@
+<!doctype html>
+  <html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-140898840-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-140898840-1');
+</script>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="msvalidate.01" content="E11C154B6A78614C57F4BBEAA7A3F634" />
+    <meta name="yandex-verification" content="ce57abaa44feecca" />
+    <meta name="description" content="{{ post.title }} | Professional, secure web design and development based in Baltimore. Take control of your brand. Get a free quote!">
+    <meta name ="author" content="Bryan Bailey">
+    <meta name="url" content="{{ url_for('blog_post', slug=post.slug) }}">
+    <meta name="keywords" content="Bryan Bailey, web designer, web developer, web development, {{ post.keywords }}">
+    <meta property="og:url" content="https://www.brizzle.dev{{ url_for('blog_post', slug=post.slug) }}">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ post.title }} | Professional, secure web design and development. Take control of your brand. Get a free quote!">
+    <meta property="og:description" content="{{ post.body[:300] }}">
+    <meta property="og:keywords" content="Bryan Bailey, freelance, web designer, web developer, web development, {{ post.keywords }}">
+    <meta property="og:image" content="https://www.brizzle.dev{{ url_for('static', filename="uploads/" + post.featured_img) }}">
+    <meta property="og:image:width" content="700">
+    <meta property="og:image:height" content="600">
+    <meta property="og:url" content="{{ url_for('blog_post', slug=post.slug) }}">
+    <meta property="fb:app_id" content="206574139389252">
+    <meta name="twitter:title" content="{{ post.title }} | Professional, secure web design and development. Take control of your brand. Get a free quote!">
+    <meta name="twitter:description" content="{{ post.body[:300] }}">
+    <meta name="twitter:image" content="https://www.brizzle.dev{{ url_for('static', filename="uploads/" + post.featured_img) }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/portfolio.css') }}" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Just+Another+Hand" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
+    <link rel="canonical" href="{{ url_for('index') }}">
+    {% block title %}
+    <title>{% if title %} {{ title }} | Bryan Bailey - Web Developer {% endif %} Bryan Bailey - Web Developer</title>
+    {% endblock %}
+    {% block scripts %}
+        {{ moment.include_jquery() }}
+        {{ moment.include_moment() }}
+        {{ pagedown.include_pagedown() }}
+    {% endblock %}
+  </head>
+  <body>
+  <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=206574139389252&autoLogAppEvents=1"></script>
+<!--<script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6"></script>-->
+  {% include 'core/announcements.html' %}
+  {% include 'core/nav.html' %}
+      {% block content %}
+      {% endblock content %}
+
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script type="text/javascript">var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode:"9a7ff75f400e5e22efb4accbee52ca1692ec060b8636457c5a18fc16f618cc45", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.com/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);</script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <script type="text/javascript">
+      window.setTimeout(function() {
+        $("#alert_message").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+        });
+      }, 3000);
+      </script>
+    <section class="container-fluid bg-info text-center text-white py-5">
+        <div class="row">
+          <div class="col">
+            <span class="text-center fa fa-gamepad fa-4x"></span>
+            <h2>Play A Game of <strong>Tetris</strong>!</h2>
+            <p class="display-4">&darr; - &uarr; - &larr; - &larr; - a &rarr; - &darr;</p>
+            <small>...or click <a href="{{ url_for('tetris') }}" alt="Tetris" title="Tetris">here</a> if you're not quite that nerdy!</small>
+          </div>
+        </div>
+      </section>
+    {% include 'core/footer.html' %}
+  </body>
+
+</html>

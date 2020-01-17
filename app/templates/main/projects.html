@@ -1,0 +1,59 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
+    <main class="container pt-3">
+        <h1 class="text-success">Current Projects</h1>
+
+        <section class="row">
+            <div id="accordion" class="col">
+                {% for project in projects %}
+
+                <div class="card mb-3">
+
+                    <div class="card-header" id="heading{{ project.slug[:2] }}">
+                        <h5 class="mb-0">
+                            <span class="fa fa-tasks text-muted"></span>
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#{{ project.slug[:4] }}" aria-expanded="true" aria-controls="{{ project.slug[:4] }}" >
+                            {{ project.title }}
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="{{project.slug[:4]}}" class="collapse " aria-labeledby="heading{{ project.slug[:2] }}" data-parent="#accordion">
+                        <img class="card-img-top" src="{{ url_for('static', filename="uploads/" + project.featured_img) }}" alt="{{ project.title }}" title="{{ project.title }}" height="400px">
+                        <div class="card-body">
+                            {{ project.details | safe }}
+                        </div>
+
+                        <a class="btn btn-success btn-block" href="">Contribute</a>
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </section>
+
+    </main>
+<section class="projects container-fluid bg-secondary text-white py-5">
+  <div class="row">
+    <div class="col text-center">
+        <h2 class="text-success">All Work and No Play...</h2>
+        <p>Aside from doing design and development work, I'm also passionate about <span class="fa fa-music"></span> <strong>music</strong> <span class="fa fa-music"></span></p>
+
+        <div class="py-3">
+            <h5 class="border-bottom border-success w-25 mx-auto"><em>Where Is Love</em> - <strong>Oliver</strong></h5>
+            <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fthe.brizzle%2Fvideos%2F10104988261446055%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+        </div>
+
+        <div class="py-3">
+            <h5 class="border-bottom border-success w-25 mx-auto"><em>Eyes On Me</em> - <strong>Nobuo Uematsu/Final Fantasy VIII</strong></h5>
+            <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fthe.brizzle%2Fvideos%2F10104977163780865%2F&show_text=0&width=560" width="560" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+        </div>
+
+    </div>
+  </div>
+</section>
+        
+{% endblock content %}

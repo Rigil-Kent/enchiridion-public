@@ -1,0 +1,65 @@
+{% extends 'admin/base.html' %}
+{% import 'admin/macros.html' as macros %}
+{% block content %}
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="maincontent">
+
+      {% include 'admin/topbar.html' %}
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+          <h1 class="m-0 font-weight-bold">Project  Management</h1>
+          
+          {% if projects %}
+          <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">All Projects</h6>
+              </div>
+              <div class="card-body">
+                      <table class="table table-responsive-sm">
+                              <tr>
+                                  <thead>
+                                      <th>Title</th>
+                                      <th>Slug</th>
+                                      <th>Actions</th>
+                                  </thead>
+                              </tr>
+                              <tbody>
+                              {% for project in projects %}
+                              <tr>
+                                  <td><strong>{{ project.name }}</strong></td>
+                                  <td>{{ project.slug }}</td>
+                                  <td><a href="{{ url_for('account.project_delete', name=project.name) }}"><i class='far fa-trash-alt text-danger'></i></a>   <a href="{{ url_for('account.project_edit', name=project.name) }}" alt="" title=""><i class="far fa-edit fa-fw"></i></a></td>
+                              </tr>
+                              {% endfor %}
+                              </tbody>
+                          </table>
+              </div>
+            </div>
+            <div>
+                {{ macros.pagination_widget(pagination, 'account.posts') }}
+            </div>
+          {% else %}
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Oops! No posts here</h6>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{{ url_for('static', filename='admin/img/undraw_posting_photo.svg') }}" alt="">
+                </div>
+                <p class="text-center">Blog posts can give your audience incentive to come back again and again, boosting your reach in Search Engines.</p>
+                <a href="{{ url_for('account.post_create') }}">Add A Blog Post? &rarr;</a>
+            </div>
+          </div>
+          {% endif %}
+      </div>
+
+      {% include 'admin/footer.html' %}
+
+  </div>
+  <!-- End of Content Wrapper -->
+{% endblock content %}

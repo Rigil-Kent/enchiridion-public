@@ -1,0 +1,82 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="maincontent">
+
+      {% include 'admin/topbar.html' %}
+
+      <!-- At A Glance  -->
+      <div class="container-fluid">
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+              {% for message in messages %}
+                {{ message }}
+              {% endfor %}
+          {% endif %}
+          {% endwith %}
+        <div class="row ">
+          <div class="col bg-white mb-2 p-3">
+            Welcome, to <strong>Saves-All-Comics</strong><sup class="text-danger">BETA</sup>. This application rips &amp; archives comics from <a href="https://www.readallcomics.com" rel="Nofollow">www.readallcomics.com</a> and is only meant for demostration purposes. To start downloading, click your profile in the top-right corner and select <span class="text-info">Save A Comic</span>.
+          </div>
+        </div>
+        <div class="row">
+
+            <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Users</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ user_count }}</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xl-4 col-md-6 mb-4">
+                  <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Comics</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{ comic_count }}</div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-book-dead fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-left-success shadow h-100 py-2">
+                      <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pending Invitations</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ pending|length }}</div>
+                          </div>
+                          <div class="col-auto">
+                            <i class="fas fa-envelope fa-2x text-gray-300"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+        </div>
+      </div>
+
+    {% include 'admin/footer.html' %}
+
+  </div>
+  <!-- End of Content Wrapper -->
+{% endblock content %}

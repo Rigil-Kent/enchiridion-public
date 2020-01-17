@@ -1,0 +1,4 @@
+{{ name }} <{{email}}> is interested in a quote for services.
+
+Re: {{ subject }}
+Quoted Text - "{{ msg }}"

@@ -1,0 +1,36 @@
+{% extends 'brizzledev3/base.html' %}
+{% block content %}
+	<!--================ start banner Area =================-->
+	<section class="home-banner-area">
+            <div class="container">
+                <div class="row justify-content-end fullscreen">
+                    <div class="col-lg-6 col-md-12 home-banner-left d-flex fullscreen align-items-center">
+                        <div>
+                            <h1 class="">
+                                Page Not Found <span>404</span>. <br>
+                                Uh oh. Looks like the resource you're looking for isn't here. 
+                            </h1>
+                            <p class="mx-auto mb-40">
+                                You could always go back <a href="{{ url_for('main.index') }}">home</a> and try again <span>or</span> check out my <a href="{{ url_for('main.savecomic') }}" target="_blank">Saves-All-Comics</a> web application!
+                            </p>
+                            <a href="{{ url_for('main.contact') }}" class="primary-btn">Want To See More?</a>
+    
+                            <div class="d-flex align-items-center mt-60">
+                                <a id="play-home-video" class="video-play-button" href="https://www.youtube.com/watch?time_continue=2v=5VuP_r4Btc4">
+                                    <span></span>
+                                </a>
+                                <div class="watch_video">
+                                    <h5>Saves-All-Comics</h5>
+                                    <p>Watch A Live Demo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 no-padding home-banner-right d-flex fullscreen align-items-end">
+                        <img class="img-fluid" src="{{ url_for('static', filename='brizzledev/img/headerimg.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================ End banner Area =================-->
+{% endblock content %}

@@ -1,0 +1,48 @@
+{% extends 'brizzledev3/base.html' %}
+{% block content %}
+
+    <section class="banner_area ">
+		<div class="banner_inner overlay d-flex align-items-center">
+			<div class="container">
+				<div class="banner_content text-left">
+					<div class="page_link">
+						<a href="{{ url_for('main.index') }}">Home</a>
+						<a href="{{ url_for('main.builder') }}" alt="SiteBuilder 0.0.1a by brizzle.dev" title="SiteBuilder 0.0.1a by brizzle.dev">SiteBuilder</a>
+					</div>
+					<h2>SiteBuilder 0.0.1a</h2>
+				</div>
+			</div>
+		</div>
+    </section>
+    <main class="container">
+    
+    <section class="row mb-4">
+        <div class="col-12">
+            <h1 class="text-success  display-4">Create A New Repository</h1>
+            <form class="row contact_form input-group-icon mt-10" action="" method="post" id="contactForm">
+                {{ form.hidden_tag() }}
+                <div class="col-10">
+                {{ form.name(class='single-input', placeholder='Enter Project Name') }}
+                </div>
+                <div class="col">
+                {{ form.submit(class="mr-auto genric-btn success") }}
+                </div>
+            </form>
+
+            <div class="row counter_area justify-content-between">
+            {% for repo in repos %}
+            <div class="col-md-4 single_counter mb-2">
+              <div class="info-content">
+                <h2><a href="{{ repo.html_url }}">{{ repo.name }}</a></h2>
+                <p>Created: {{ moment(repo.created_at).format('LL') }}</p>
+                <p class="sample-text">{{ repo.description }}</p>
+                <p>{{ repo.language }}</p>
+              </div>
+            </div>
+
+            {% endfor %}
+          </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

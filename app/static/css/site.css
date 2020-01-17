@@ -1,0 +1,71 @@
+
+
+.jumbotron {
+    position: relative;
+    background: url(../esm-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 350px;
+}
+
+.jumbo-info {
+    position: absolute;
+    top: 180px;
+    left: 0;
+    color: white;
+}
+
+
+.jumbo-info h1 {
+    font-weight: 900;
+}
+
+
+.cover {
+    height: 300px;
+}
+
+.bg-register-image, .bg-login-image {
+    background: url("../esm-bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 20px;
+}
+
+#input-image {
+    position: relative;
+}
+
+.input-upload {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+#input-image input.file {
+    position: relative;
+    text-align: right;
+    opacity: 0;
+    -moz-opacity: 0;
+    z-index: 2;
+}
+
+.media-container {
+    position: relative;
+    align-self: flex-end;
+}
+
+.media-info {
+    top: 50px;
+}
+
+.blog-details img {
+    max-width: 540px !important;
+}

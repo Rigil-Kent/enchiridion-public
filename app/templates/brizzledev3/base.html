@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-140898840-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-140898840-1');
+	</script>
+	<meta name="msvalidate.01" content="E11C154B6A78614C57F4BBEAA7A3F634" />
+	<meta name="yandex-verification" content="ce57abaa44feecca" />
+	<meta property="fb:app_id" content="206574139389252">
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@zetsuboubrizzle" />
+	<meta name="twitter:creator" content="@zetsuboubrizzle" />
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="{{ url_for('static', filename='brizzledev/img/bb.png') }}">
+	<!-- Author Meta -->
+	<meta name="author" content="Bryan Bailey">	
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	{% if post %}
+	<meta property="keywords" content="bryan bailey, web developer, baltimore web developer, {% for tag in post.tags %}{{ tag.name }}, {% endfor %}">
+	<meta property="og:description" content="{{ post.summary }}" />
+    <meta property="og:url" content="{{ url_for('main.post', permalink=post.permalink, _external=True) }}" />
+    <meta property="og:title" content="{{ post.title[:40] }} | Bryan Bailey">
+    <meta property="og:image" content="{{ url_for('static', filename='uploads/blog/' + post.featured_image, _external=True) }}">
+    <meta property="og:image:width" content="530">
+	<meta property="og:image:height" content="300">
+	<title>{{ post.title }} | Bryan Bailey - Web &amp; Application Developer</title>
+	{% elif project %}
+	<meta property="keywords" content="bryan bailey, web developer, baltimore web developer, {% for tag in project.tags %}{{ tag.name }}, {% endfor %}">
+	<meta property="og:description" content="{{ project.summary }}">
+    <meta name="og:url" content="{{ url_for('main.project', slug=project.slug, _external=True) }}">
+    <meta property="og:title" content="{{ project.name[:40] }} | Bryan Bailey">
+    <meta property="og:image" content="{{ url_for('static', filename='uploads/blog/' + project.featured_image, _external=True) }}">
+    <meta property="og:image:width" content="530">
+	<meta property="og:image:height" content="300">
+	<title>{{ project.name }} | Bryan Bailey - Web &amp; Application Developer</title>
+	{% else %}
+	<meta name="keywords" content="web developer, web designer, freelance, maryland website development, web designer for hire, entrepreneur, baltimore website development, pianist, musician for hire">
+    <meta property="og:url" content="{{ url_for('main.index') }}">
+    <meta property="og:title" content="Brizzle.dev | Bryan Bailey, Baltimore, Maryland Web Developer">
+    <meta property="og:image" content="{{ url_for('static', filename='brizzle-logo.png', _external=True) }}">
+    <meta property="og:image:width" content="530">
+	<meta property="og:image:height" content="79">
+	<title>Bryan Bailey Web &amp; Application Developer</title>
+    {% endif %}
+	
+	<!-- Site Title -->
+	
+
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700|Roboto:400,400i,500" rel="stylesheet">
+	<!-- CSS  -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='brizzledev/css/linearicons.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='brizzledev/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='brizzledev/css/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='brizzledev/css/magnific-popup.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='brizzledev/css/owl.carousel.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='brizzledev/css/hexagons.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='brizzledev/css/nice-select.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='brizzledev/css/main.css') }}">
+	<script src="https://cdn.tiny.cloud/1/127p0608815i6uyld4gzbyigq9vrtw6vfp3o3yhrcnkeudef/tinymce/5/tinymce.min.js"></script>
+</head>
+
+<body>
+		<div id="fb-root"></div>
+		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=206574139389252&autoLogAppEvents=1"></script>
+
+	{% include 'brizzledev3/nav.html'%}
+	
+    
+    {% block content %}
+    {% endblock %}
+    
+    {% include 'brizzledev3/footer.html' %}
+
+
+	<script src="{{ url_for('static', filename='brizzledev/js/vendor/jquery-2.2.4.min.js') }}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+	 crossorigin="anonymous"></script>
+	<script src="{{ url_for('static', filename='brizzledev/js/vendor/bootstrap.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='brizzledev/js/jquery.ajaxchimp.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='brizzledev/js/jquery.magnific-popup.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='brizzledev/js/parallax.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='brizzledev/js/owl.carousel.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='brizzledev/js/jquery.nice-select.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='brizzledev/js/jquery.sticky.js') }}"></script>
+	<script src="j{{ url_for('static', filename='brizzledev/s/hexagons.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='brizzledev/js/jquery.counterup.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='brizzledev/js/waypoints.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='brizzledev/js/main.js') }}"></script>
+	{{ moment.include_moment() }}
+
+	<script src="https://cdn.tiny.cloud/1/127p0608815i6uyld4gzbyigq9vrtw6vfp3o3yhrcnkeudef/tinymce/5/tinymce.min.js"></script>
+    <script>
+    
+    tinymce.init({ 
+      selector: '#content',
+      height: 500,
+      menubar: 'insert',
+      plugins: [
+        'advlist autolink lists link image charmap print preview anchor media', 'searchreplace visualblocks code', 'insertdatetime image table paste code help wordcount'
+        ],
+      toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | image media | bullist numlist outdent indent | removeformat | help',
+	  media_filter_html: false,
+	  media_live_embeds: true,
+	  image_list: '{{ url_for("main.index") }}account/res/media',
+      content_style: 'img {max-width: 100%;}',
+      content_css: [
+        'https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+        'https://www.tiny.cloud/css/codepen.min.css'
+      ],
+      relative_urls: false
+	  });
+
+	  
+	  function disableinput() {
+		document.getElementById("req").disabled = true;
+		document.getElementById("submit").disabled = true;
+	  }
+	  // Bootstrap/TinyMCE Modal fix
+	  $(document).on('focusin', function(e) {
+        if ($(e.target).closest(".tox-form__group").length) {
+          e.stopImmediatePropagation();
+        }
+	  })
+	  
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<div class="blog_right_sidebar">
+        <aside class="single_sidebar_widget author_widget">
+                <img class="author_img rounded-circle" src="{{ url_for('static', filename='me.jpg') }}" width="30%" alt="">
+                <h4>Bryan Bailey</h4>
+                <p>Web Developer</p>
+                <div class="social_icon">
+                    <a href="https://www.facebook.com/the.brizzle"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.twitter.com/zetsuboubrizzle"><i class="fa fa-twitter"></i></a>
+                    <a href="https://github.com/Rigil-Kent"><i class="fa fa-github"></i></a>
+                    <a href="https://instagram.com/zanzetsukenbcb"><i class="fa fa-instagram"></i></a>
+                </div>
+                <p class="mt-1">I'm pretty good at building things using Python, HTML5, CSS3, JavaScript & AWS. On occasion, I might dabble in C# (Unity3d) and C++. 
+                    This very site was built from the ground up as a customized content management system to take advantage of AWS services and is extremely fault tolerant.  
+                </p>
+                <p>My experience in Systems and Network Operations with companies like <span class="text-primary">Skyline Technology Solutions</span>, <span class="text-primary">Zenimax Online</span>, and <span class="text-primary">Bethesda Game Studios</span> keeps systems and network infrastructure 
+                    in the back of my head from the first requirement until deploy to live.</p>
+                    <a href="https://twitter.com/zetsuboubrizzle?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @zetsuboubrizzle</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <div class="br"></div>
+            </aside>
+            <aside class="single_sidebar_widget popular_post_widget">
+                <h3 class="widget_title">Latest Posts</h3>
+                {% if latest_posts %}
+                {% for post in latest_posts %}
+                <div class="media post_item">
+                    <img src="{{ url_for('static', filename='uploads/blog/' + post.featured_image) }}" width="100px" alt="post">
+                    <div class="media-body">
+                        <a href="{{ url_for('main.post', permalink=post.permalink) }}">
+                            <h3>{{ post.title }}</h3>
+                        </a>
+                        <p>{{ moment(post.timestamp).fromNow() }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                {% else %}
+                <p>Nothing to see here.</p>
+                {% endif %}
+                <div class="br"></div>
+            </aside>
+            {% if ad %}
+            <aside class="single_sidebar_widget ads_widget">
+                <a href="#"><img class="img-fluid" src="{{ url_for('static', filename='brizzledev/img/blog/add.jpg') }}" alt=""></a>
+                <div class="br"></div>
+            </aside>
+            {% endif %}
+    <aside class="single_sidebar_widget post_category_widget">
+        <h4 class="widget_title">Post Catgories</h4>
+        {% if categories %}
+        <ul class="list cat-list">
+            {% for cat in categories %}
+            <li>
+                <a href="{{ url_for('main.category', name=cat.name) }}" class="d-flex justify-content-between">
+                    <p>{{ cat.name }}</p>
+                </a>
+            </li>
+            {% endfor %}
+
+        </ul>
+        {% else %}
+        <p>Come back soon!</p>
+        {% endif %}
+        <div class="br"></div>
+    </aside>
+
+    <aside class="single-sidebar-widget tag_cloud_widget">
+        <h4 class="widget_title">Tag Clouds</h4>
+        {% if tags %}
+        <ul class="list">
+            {% for tag in tags %}
+            <li><a href="{{ url_for('main.tag', name=tag.name) }}">{{ tag.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Great things to come!</p>
+        {% endif %}
+    </aside>
+</div>

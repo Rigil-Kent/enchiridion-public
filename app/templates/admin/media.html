@@ -1,0 +1,62 @@
+{% extends 'admin/base.html' %}
+{% import 'admin/macros.html' as macros %}
+{% block content %}
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="maincontent">
+
+      {% include 'admin/topbar.html' %}
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+          <h1 class="m-0 font-weight-bold">Media Management</h1>
+          
+          {% if media %}
+          <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">All Media</h6>
+              </div>
+              <div class="card-body">
+                  {% for file in media %}
+                  <div class="col-3">
+                    <div class="position-relative">
+                        <div class="position-absolute text-center media-info">
+                            <h4>{{ file.title }}</h4>
+                            <h6>{{ file.filename }}</h6>
+                            <small>{{ file.caption }}</small>
+                            <small>{{ file.description }}</small>
+                        </div>
+                      <img src="{{ url_for('static', filename='uploads/' + file.filename) }}" class="img-fluid img-thumbnail">
+                      
+                    </div>
+                  </div>
+                  {% endfor %}
+
+              </div>
+            </div>
+            <div>
+              {{ macros.pagination_widget(pagination, 'account.media') }}
+            </div>
+          {% else %}
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Hmmm...No media...</h6>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{{ url_for('static', filename='admin/img/undraw_images.svg') }}" alt="">
+                </div>
+                <p class="text-center">Media of any kind that's used in your website will be stored in one easy to manage container. Most image, audio &amp; video files are supported as well as <strong class="text-danger">pdf</strong>, <strong class="text-danger">cbr</strong>, <strong class="text-danger">xlsx</strong> &amp; <strong class="text-danger">csv</strong>.</p>
+                <a href="{{ url_for('account.media_upload') }}">Add A New File? &rarr;</a>
+            </div>
+          </div>
+          {% endif %}
+      </div>
+
+      {% include 'admin/footer.html' %}
+
+  </div>
+  <!-- End of Content Wrapper -->
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'core/proj_base.html' %}
+{% block content %}
+<main class="container">
+    <section class="row">
+        <div class="col">
+            <h1 class="text-success  display-4"><strong>{{ project.title }}</strong></h1>
+            <ul class="list-unstyled">
+            {% for tech in project.stack.split(',') %}
+                <li class="badge badge-secondary px-2 py-2">{{ tech }}</li>
+            {% endfor %}
+            </ul>
+
+            <img class="img-fluid" src="{{ url_for('static', filename='uploads/' + project.featured_img ) }}" alt="{{ project.title }}" title="{{ project.title }}">
+
+            <p class="lead"> {{project.details | safe }}</p>
+
+            <div class="fb-comments" data-href="https://www.brizzle.dev{{ url_for('project', slug=project.slug) }}" data-width="100%" data-numposts="15"></div>
+        </div>
+    </section>
+</main>
+{% endblock content %}

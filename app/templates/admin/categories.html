@@ -1,0 +1,80 @@
+{% extends 'admin/base.html' %}
+{% import 'admin/macros.html' as macros %}
+{% block content %}
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="maincontent">
+
+      {% include 'admin/topbar.html' %}
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+          <h1 class="m-0 font-weight-bold">Blog Category Management</h1>
+          <form class="user" method="POST" enctype=multipart/form-data>
+            {{ form.hidden_tag() }}
+            <div class="form-group row">
+                <div class="col-sm-9 mb-3 mb-sm-0">
+                    {{ form.name(class="form-control form-control-user", placeholder="Category Name") }}
+                    {% for error in form.name.errors %}
+                      {{ error }}
+                    {% endfor %}
+                </div>
+                <div class="col-sm-3">
+                    {{ form.submit(class="btn btn-primary btn-user") }}
+                </div>
+              </div>
+          </form>
+          {% if categories %}
+          <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Available Catagories</h6>
+              </div>
+              <div class="card-body">
+                      <table class="table table-responsive-sm">
+                              <tr>
+                                  <thead>
+                                      <th>ID</th>
+                                      <th>Name</th>
+                                      <th>Description</th>
+                                      <th>Actions</th>
+                                  </thead>
+                              </tr>
+                              <tbody>
+                              {% for cat in categories %}
+                              <tr>
+                                  <td><strong>{{ cat.id }}</strong></td>
+                                  <td>{{ cat.name }}</td>
+                                  <td>{{ cat.description }}</td>
+                                  <td><a href="{{ url_for('account.cat_delete', name=cat.name) }}"><i class='far fa-trash-alt text-danger'></i></a>    <a href="" alt="" title=""><i class='fas fa-globe text-primary'></td>
+                              </tr>
+                              {% endfor %}
+                              </tbody>
+                          </table>
+              </div>
+            </div>
+            <div>
+                {{ macros.pagination_widget(pagination, 'account.post_cats') }}
+            </div>
+          {% else %}
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Categories! Categories! Where for art thou Categories?</h6>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{{ url_for('static', filename='admin/img/undraw_next_option.svg') }}" alt="">
+                </div>
+                <p class="text-center">Categories help keep your posts organized for your audience!</p>
+                <a target="_blank" rel="nofollow" href="https://www.brizzle.dev">Add A New Category? &rarr;</a>
+            </div>
+          </div>
+          {% endif %}
+      </div>
+
+      {% include 'admin/footer.html' %}
+
+  </div>
+  <!-- End of Content Wrapper -->
+{% endblock content %}

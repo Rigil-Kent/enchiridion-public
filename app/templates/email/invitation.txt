@@ -1,0 +1,20 @@
+Hello there, {{ invitation.first_name }}
+
+{{ current_user.first_name }} {{ current_user.last_name }} considers you a fan -- no, a connoisseur -- of fine comic titles such as {{ comic.title }}.
+
+They are sending you this invitation to Saves-All-Comics! - A comic download website currently in beta.
+
+You can accept this invitation by registering an account at the following link:
+
+{{ url_for('main.register', code=invitation.invitation_code, _external=True) }}
+
+Please be sure to use this email address to register or your code will not work!
+
+While this is a free download service we do not condone piracy. Please be sure that you a) own a copy of the titles you download and/or b) support your favorite writers and artists.
+
+Have fun!
+
+
+Bryan Bailey
+web developer
+www.brizzle.dev

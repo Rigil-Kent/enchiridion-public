@@ -1,0 +1,141 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="maincontent">
+
+      {% include 'admin/topbar.html' %}
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                  {{ message }}
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+          <h1 class="m-0 font-weight-bold">{% if project %} Edit Project {% else %} New Project {% endif %}</h1>
+          
+          
+          {% if project %}
+          <div class="card shadow mb-4">
+                <form class="user" method="POST" enctype=multipart/form-data>
+                    {{ form.hidden_tag() }}
+                <div class="card-header py-3 d-flex justify-content-between">
+                    <div>
+                        <h6 id="blog-post-heading" class="m-0 font-weight-bold text-primary">{% if post %}{{ post.title }}{% else %}Untitled Post{% endif %}<i class="fas fa-pencil fa-fw"></i></h6>
+                        <p class="mt-3"><a tabindex="0" type="button" data-html="true" data-container="body" data-toggle="popover" data-placement="top" data-content="<h6>Available Tags</h6>{% for tag in tags %}{% if tag not in project.tags %}<a class='badge badge-primary m-1' href='{{ url_for('account.tag_project', name=tag.name, projectid=project.id)}}'>{{ tag.name }}</a>{% endif %}{% endfor %}">
+                            <i class="fas fa-plus-circle text-success"></i>
+                        </a> Tagged: {% if project.tags %}<small>{% for tag in project.tags %} <a href="">{{ tag.name }}</a>{% endfor %}</small>{% endif %}</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0 d-flex justify-content-center">
+                                        <div>
+                                            {{ form.featured_image(class="form-control-file form-control-file-sm", size="128") }}
+                                            {% for error in form.featured_image.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                            <div>
+                                                {% if project.featured_image == None %}
+                                                <img src="{{ url_for('static', filename='upload.png') }}">
+                                                {% else %}
+                                                <img src="{{ url_for('static', filename='uploads/projects/' + project.featured_image) }}" class="img-fluid">
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    {{ form.name(class="form-control form-control-sm", placeholder="Project Title") }}
+                                    {% for error in form.name.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    {{ form.content(class="form-control form-control-sm", id="content", placeholder="Project Body") }}
+                                    {% for error in form.content.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-sm-3 mt-3 ml-auto">
+                            {{ form.submit(class="btn btn-primary btn-user") }}
+                        </div>
+                    </form>
+                    </div>
+                </div>
+              </div>
+          {% else %}
+          <div class="card shadow mb-4">
+                <form class="user" method="POST" enctype=multipart/form-data>
+                    {{ form.hidden_tag() }}
+                <div class="card-header py-3 d-flex justify-content-between">
+                    <h6 id="blog-post-heading" class="m-0 font-weight-bold text-primary">Untitled Project<i class="far fa-pencil fa-fw"></i></h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0 d-flex justify-content-center">
+                                        <div>
+                                            {{ form.featured_image(class="form-control-file form-control-file-sm", size="128") }}
+                                            {% for error in form.featured_image.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                            <div class="mt-2">
+                                                <img src="{{ url_for('static', filename='upload.png') }}">
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    {{ form.name(class="form-control form-control-sm", placeholder="Project Title") }}
+                                    {% for error in form.name.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    {{ form.content(class="form-control form-control-sm", placeholder="Project Body") }}
+                                    {% for error in form.content.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-sm-3 mt-3 ml-auto">
+                            {{ form.submit(class="btn btn-primary btn-user") }}
+                        </div>
+                    </form>
+                    </div>
+                </div>
+              </div>
+          {% endif %}
+      </div>
+
+      {% include 'admin/footer.html' %}
+
+  </div>
+  <!-- End of Content Wrapper -->
+{% endblock content %}

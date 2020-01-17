@@ -1,0 +1,204 @@
+{% extends 'main/core/base.html' %}
+{% block content %}
+<section class="jumbotron jumbotron-fluid bg-identity text-white text-center py-5">
+
+    <div class="col py-5 mt-3">
+        <h1 class="display-1 mb-0 justify-content-end">I'm <strong><span class="green">Bryan</span></strong></h1>
+        <h2>A Programmer and Musician from Baltimore, MD. I build websites, web applcations and games.</h2>
+    </div>
+
+    <br>
+</section>
+<div class="container text-center">
+
+  {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+              {% for category, message in messages %}
+                {% if category == 'info' %}
+                  {{ message }}
+                {% endif %}
+              {% endfor %}
+          {% endif %}
+      {% endwith %}
+   
+  <ul class="nav navbar social">
+    <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/the.brizzle" title='Bryan @ Facebook' target="_blank"><i class="fab fa-facebook-f fa-2x fa-fw" aria-hidden="true"></i></a></li>
+    <li class="nav-item"><a class="nav-link" href="https://www.github.com/Rigil-Kent" title='Bryan @ GitHub' target="_blank"><i class="fab fa-github fa-2x fa-fw" aria-hidden="true"></i></a></li>
+    <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/bryancbailey" title='Bryan @ LinkedIn' target="_blank"><i class="fab fa-linkedin fa-2x fa-fw" aria-hidden="true"></i></a></li>
+    <li class="nav-item"><a class="nav-link" href="https://www.instagram.com/zanzetsukenbcb/" alt='Bryan @ Instgram' target="_blank"><i class="fab fa-instagram fa-2x fa-fw" aria-hidden="true"></i></a></li>
+    <li class="nav-item"><a class="nav-link" href="https://twitter.com/zetsuboubrizzle" title='Bryan @ Twitter' target="_blank"><i class="fab fa-twitter fa-2x fa-fw" aria-hidden="true"></i></a></li>
+    <li class="nav-item"><a class="nav-link" href="https://soundcloud.com/bryanbrizzlebailey" title='Bryan @ Souncloud' target="_blank"><i class="fab fa-soundcloud fa-2x fa-fw" aria-hidden="true"></i></a></li>
+  </ul>
+
+</div>
+
+<div class="container-fluid px-0">
+    
+    <!--  Service boxes  -->
+
+    <section class="services pt-100 pb-50 container-fluid" id="services">
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-6 mx-auto text-center">
+                  <div class="section-title mb-100">
+                     <h5 class="text-center text-muted"><span class="fas fa-code-branch fw"></span></h5>
+                     <h4 class="text-muted">how can i help?</h4>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-lg-4 col-md-6">
+                  <!-- Single Service -->
+                  <div class="single-service">
+                     <i class="fa fa-laptop"></i>
+                     <h4 class="text-success">Web Design </h4>
+                     <small class="text-muted">Photoshop | Illustrator | Photography</small>
+                     <p>Whether you need custom photographs, illustrated graphics or a complete design overhaul - benefit from Front End AND Backend proficiency.</p>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-6">
+                  <!-- Single Service -->
+                  <div class="single-service">
+                     <i class="fa fa-cogs"></i>
+                     <h4 class="text-success">Web Development</h4>
+                     <small class="text-muted">Python | Flask | Amazon Web Services</small>
+                     <p>Specializing in web applications, I design databases and build custom Flask based websites in Python to provide business solutions.</p>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-6">
+                  <!-- Single Service -->
+                  <div class="single-service">
+                     <i class="fa fa-mobile"></i>
+                     <h4 class="text-success">Responsive Design</h4>
+                     <small class="text-muted">Bootstrap 4 | HTML5 | JQuery</small>
+                     <p>Design paradigm <a href="https://www.keycdn.com/blog/benefits-of-responsive-web-design">known</a> for lower maintenance and faster development times. Guaranteed to be designed with "Mobile First" in mind. </p>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-6">
+                  <!-- Single Service -->
+                  <div class="single-service">
+                     <i class="fa fa-gamepad"></i>
+                     <h4 class="text-success">Game Development</h4>
+                     <small class="text-muted">Unity3D | PyGame | Phaser.js</small>
+                     <p>Bring the polygonal trolls from your mind to life. From concept to E3. Let's build some interacive worlds! </p>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-6">
+                  <!-- Single Service -->
+                  <div class="single-service">
+                     <i class="fa fa-search"></i>
+                     <h4 class="text-success">SEO Optimization</h4>
+                     <small class="text-muted mt-0 pb-2">Meta Tagging | Google Analytics | Google Search Console</small>
+                     <p>SEO is not only about search engines but improving the user experience of a website.</p>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-6">
+                  <!-- Single Service -->
+                  <div class="single-service">
+                     <i class="fas fa-fa fa-lightbulb"></i>
+                     <h4 class="text-success">Branding</h4>
+                     <small class="text-muted">Logo | Flyers | Business Cards</small>
+                     <p>A simple logo or a full fledge branding initiative with business cards, stationary, etc. All deliverables print ready.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+
+    <!-- END Service boxes -->
+
+
+
+
+<!--default image size 444 x 253 -->
+<div id="credits" class="section container-fluid credits">
+    <h5 class="text-center text-muted"><span class="fa fa-briefcase fa-fw"></span></h5>
+    <h4 class="text-center text-muted">Professional Credits</h4>
+    <div class="row">
+
+        <div class="col-sm-4 col-md-3 box14 ">
+            <img class="img-fluid image" src="{{ url_for('static', filename='eso.jpg') }}" alt="Bryan Bailey | Systems Adminitrator | Elder Scrolls Online" title="Bryan Bailey | Systems Adminitrator | Elder Scrolls Online">
+            <div class="box-content text-center">
+                <a href="https://www.elderscrollsonline.com" alt="Bryan Bailey | Systems Adminitrator | Elder Scrolls Online" title="Bryan Bailey | Systems Adminitrator | Elder Scrolls Online"><h3 class="title">Elder Scrolls Online</h3></a>
+                <span class="post">Systems Administrator</span>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-md-3 box14">
+            <img class="img-fluid image" src="{{ url_for('static', filename='76.jpg') }}" alt="Bryan Bailey | Systems Adminitrator | Fallout 76" title="Bryan Bailey | Systems Adminitrator | Fallout 76">
+            <div class="box-content text-center">
+                <a href="https://fallout.bethesda.net/en/" alt="Bryan Bailey | Systems Adminitrator | Fallout 76" title="Bryan Bailey | Systems Adminitrator | Fallout 76"><h3 class="title">Fallout 76</h3></a>
+                <span class="post">Systems Administrator</span>
+                
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-md-3 box14">
+            <img class="img-fluid image" src="{{ url_for('static', filename='blades.jpg') }}" alt="Bryan Bailey | Systems Adminitrator | Elder Scrolls: Blades" title="Bryan Bailey | Systems Adminitrator| Elder Scrolls: Blades">
+            <div class="box-content text-center">
+                <a href=""><a href="https://elderscrolls.bethesda.net/en/blades" alt="Bryan Bailey | Systems Adminitrator| Elder Scrolls: Blades" title="Bryan Bailey | Systems Adminitrator| Elder Scrolls: Blades"><h3 class="title">Elder Scrolls: Blades</h3></a>
+                <span class="post">Systems Administrator</span>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-md-3 box14">
+            <img class="img-fluid image" src="{{ url_for('static', filename='skyrimSE.jpg') }}" alt="Bryan Bailey | Systems Adminitrator | Skyrim: Special Edition" title="Bryan Bailey | Systems Adminitrator | Skyrim: Special Edition">
+            <div class="box-content text-center">
+                <a href="https://store.bethesda.net/store/bethesda/en_US/pd/ThemeID.39243600/productID.5072631000" alt="Bryan Bailey | Systems Adminitrator | Skyrim: Special Edition" title="Bryan Bailey | Systems Adminitrator | Skyrim: Special Edition" ><h3 class="title">Skyrim Special Edition</h3></a>
+                <span class="post">Systems Administrator</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hr">&nbsp;</div>
+
+<!-- Portfolio -->
+{% if projects %}
+<div id="portfolio" class="section container-fluid portfolio">
+    <h5 class="text-center text-muted"><span class="fa fa-cogs fw"></span></h5>
+    <h4 class="text-center text-muted">Some Of My Work</h4>
+    <div class="row">
+        {% for project in projects %}
+
+        <div class="col-sm-6 col-md-4">
+          <div class="box14">
+            <img class="img-fluid image" src="{{ url_for('static', filename="uploads/" + project.featured_img) }}" alt="{{ project.title }}" title="{{ project.title }}">
+            <div class="box-content ">
+                <a  href="{{ url_for('project', slug=project.slug) }}"><h3 class="title text-center"><span class="gear fa fa-gear"></span>{{ project.title }}</h3></a>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+        
+    </div>
+</div>
+
+
+<div class="hr">&nbsp;</div>
+{% endif %}
+
+<div id="contact" class="section container-fluid contact">
+    <h5 class="text-center text-muted"><span class="fas fa-handshake fw"></span></h5>
+    <h4 class="text-center text-muted">Let's Build Together!</h4>
+    <div  class="row">
+        <div class="col-sm-6">
+        <small class="text-center mb-2">I offer clients <strong>flexibility</strong>. Whether you need to hire a designer, developer, <strong>user experience</strong> professional or <strong>SEO</strong> specialist at an affordable price. By leveraging emerging technologies I'm able to provide solutions with the quality of a <strong>full-service agency</strong> and the <strong>responsiveness</strong> of an in-house developer. </small>
+        
+        </div>
+
+        <div class="col-sm-6 map">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12353.195773793399!2d-76.58558161353331!3d39.28147047220999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c8038a31c715cd%3A0xb12e3d38582f6f20!2sCanton%2C+Baltimore%2C+MD!5e0!3m2!1sen!2sus!4v1556202796054!5m2!1sen!2sus" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>          
+            </div>
+            <ul class="list-unstyled">
+                <li><span class="fa fa-envelope fa-fw green"></span> <a href="mailto://bryan.bailey@brizzle.dev+subject=Brizzle.dev">bryan.bailey@brizzle.dev</a></li>
+                <li><span class="fa fa-phone fa-fw green"></span><a href="tel:1-443-228-6079">(443) 228 - 6079</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br>
+{% endblock content %}

@@ -1,0 +1,65 @@
+{% extends 'admin/base.html' %}
+{% import 'admin/macros.html' as macros %}
+{% block content %}
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="maincontent">
+
+      {% include 'admin/topbar.html' %}
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+          <h1 class="m-0 font-weight-bold">Save-All-Comics</h1>
+          <small>Limit: <span class="badge badge-primary m-1">{{ current_user.daily_counter }}</span> - <span class="text-danger">Limits reset daily.</span> <br>Observing a respectful limit keeps this service going. If you enjoy the comics you are downloading, support your favorite writers &amp; artists.</small>
+          {% if comics %}
+          <div class="card shadow mb-4 mt-2">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Download Library</h6>
+            </div>
+            <div class="card-body">
+                    <table class="table table-responsive-sm">
+                            <tr>
+                                <thead>
+                                    <th>Title</th>
+                                    <th>Filename</th>
+                                    <th>Actions</th>
+                                </thead>
+                            </tr>
+                            <tbody>
+                            {% for comic in comics %}
+                            <tr>
+                                <td><strong>{{ comic.title }}</strong></td>
+                                <td>{{ comic.filename }}</td>
+                                <td><a href="{{ url_for('account.comic_delete', title=comic.title) }}"><i class='far fa-trash-alt text-danger'></i></a>    <a href="{{ url_for('static', filename='download/' + comic.title + '/' + comic.filename) }}" alt="Download {{ comic.title }}" title="Download {{ comic.title }}"><i class='fas fa-download text-primary'></td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+            </div>
+          </div>
+          <div>
+            {{ macros.pagination_widget(pagination, 'account.mycomics') }}
+          </div>
+          {% else %}
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Whaddaya know? An empty bookshelf...</h6>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{{ url_for('static', filename='admin/img/undraw_bookshelves.svg') }}" alt="">
+                </div>
+                <p class="text-center">Redownload your comic library at any time!</p>
+                <a target="_blank" rel="nofollow" href="{{ url_for('main.savecomic') }}">Save a comic? &rarr;</a>
+            </div>
+          </div>
+          {% endif %}
+      </div>
+
+      {% include 'admin/footer.html' %}
+
+  </div>
+  <!-- End of Content Wrapper -->
+{% endblock content %}

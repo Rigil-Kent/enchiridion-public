@@ -1,0 +1,227 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="maincontent">
+
+      {% include 'admin/topbar.html' %}
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                  {{ message }}
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+          <h1 class="m-0 font-weight-bold">{% if post %} Edit Post {% else %} New Blog Post {% endif %}</h1>
+          
+          
+          {% if post %}
+          <div class="card shadow mb-4">
+                <form class="user" method="POST" enctype=multipart/form-data>
+                    {{ form.hidden_tag() }}
+                <div class="card-header py-3 d-flex justify-content-between">
+                    <div>
+                        <h6 id="blog-post-heading" class="m-0 font-weight-bold text-primary">{% if post %}{{ post.title }}{% else %}Untitled Post{% endif %}<i class="fas fa-pencil fa-fw"></i></h6>
+                        
+                        <p class="mt-3"><a tabindex="0" type="button" data-html="true" data-container="body" data-toggle="popover" data-placement="top" data-content="<h6>Available Categories</h6>{% for cat in categories %}{% if cat not in post.categories %}<a class='badge badge-primary m-1' href='{{ url_for('account.cat_add', name=cat.name, postid=post.id)}}'>{{ cat.name }}</a>{% endif %}{% endfor %}">
+                            <i class="fas fa-plus-circle text-success"></i>
+                        </a> Filed under: {% if post.categories %}<small>{% for cat in post.categories %} <a href="">{{ cat.name }}</a>{% endfor %}</small>{% endif %}</p>
+                    </div>
+                    
+                    <div class="mb-3 mb-sm-0 ml-auto">
+                        {{ form.visibility(class="form-control form-control-sm", placeholder="Post Title") }}
+                        {% for error in form.visibility.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0 d-flex justify-content-center">
+                                        <div>
+                                            {{ form.featured_image(class="form-control-file form-control-file-sm", size="128") }}
+                                            {% for error in form.featured_image.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                            <div>
+                                                {% if post.featured_image == None %}
+                                                <img src="{{ url_for('static', filename='upload.png') }}">
+                                                {% else %}
+                                                <img src="{{ url_for('static', filename='uploads/blog/' + post.featured_image) }}" class="img-fluid">
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    {{ form.title(class="form-control form-control-sm", placeholder="Post Title") }}
+                                    {% for error in form.title.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    {{ form.permalink(class="form-control form-control-sm", placeholder="Post Permalink") }}
+                                    {% for error in form.permalink.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    {{ form.summary(class="form-control form-control-sm", placeholder="Post Summary") }}
+                                    {% for error in form.summary.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    {{ form.content(class="form-control form-control-sm", id="content", placeholder="Post Body") }}
+                                    {% for error in form.content.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="form-check d-flex justify-content-between">
+                                <div class="mb-3 mb-sm-0">
+                                    {{ form.allow_comments(class="form-check-input form-check-input-sm", placeholder="Post Body") }}
+                                    {{ form.allow_comments.label }}
+                                    {% for error in form.allow_comments.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                <div class="cmb-3 mb-sm-0">
+                                    {{ form.allow_pingbacks(class="form-check-input form-check-input-sm", placeholder="Post Body") }}
+                                    {{ form.allow_pingbacks.label }}
+                                    {% for error in form.allow_pingbacks.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                <div class="mb-3 mb-sm-0">
+                                    {{ form.is_sticky(class="form-check-input form-check-input-sm", placeholder="Post Body") }}
+                                    {{ form.is_sticky.label }}
+                                    {% for error in form.is_sticky.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <p class="mt-3"><a tabindex="0" type="button" data-html="true" data-container="form" data-toggle="popover" data-placement="top" data-content="<h6>Available Tags</h6>{% for tag in tags %}{% if tag not in post.tags %}<a class='badge badge-primary m-1' href='{{ url_for('account.tag_add', name=tag.name, postid=post.id)}}'>{{ tag.name }}</a>{% endif %}{% endfor %}">
+                                <i class="fas fa-plus-circle text-success"></i>
+                            </a> Tags: {% if post.tags %}<small>{% for tag in post.tags %} <a href="">{{ tag.name }}</a>{% endfor %}</small>{% endif %}</p>
+                        </div>
+
+                        <div class="col-sm-3 mt-3 ml-auto">
+                            {{ form.submit(class="btn btn-primary btn-user") }}
+                        </div>
+                    </form>
+                    </div>
+                </div>
+              </div>
+          {% else %}
+          <div class="card shadow mb-4">
+                <form class="user" method="POST" enctype=multipart/form-data>
+                    {{ form.hidden_tag() }}
+                <div class="card-header py-3 d-flex justify-content-between">
+                    <h6 id="blog-post-heading" class="m-0 font-weight-bold text-primary">Untitled Post<i class="far fa-pencil fa-fw"></i></h6>
+                    <div class="mb-3 mb-sm-0 ml-auto">
+                        {{ form.visibility(class="form-control form-control-sm", placeholder="Post Title") }}
+                        {% for error in form.visibility.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0 d-flex justify-content-center">
+                                        <div>
+                                            {{ form.featured_image(class="form-control-file form-control-file-sm", size="128") }}
+                                            {% for error in form.featured_image.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                            <div class="mt-2">
+                                                <img src="{{ url_for('static', filename='upload.png') }}">
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    {{ form.title(class="form-control form-control-sm", placeholder="Post Title") }}
+                                    {% for error in form.title.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    {{ form.summary(class="form-control form-control-sm", placeholder="Post Summary") }}
+                                    {% for error in form.summary.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    {{ form.content(class="form-control form-control-sm", placeholder="Post Body") }}
+                                    {% for error in form.content.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="form-check d-flex justify-content-between">
+                                <div class="mb-3 mb-sm-0">
+                                    {{ form.allow_comments(class="form-check-input form-check-input-sm", placeholder="Post Body") }}
+                                    {{ form.allow_comments.label }}
+                                    {% for error in form.allow_comments.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                <div class="cmb-3 mb-sm-0">
+                                    {{ form.allow_pingbacks(class="form-check-input form-check-input-sm", placeholder="Post Body") }}
+                                    {{ form.allow_pingbacks.label }}
+                                    {% for error in form.allow_pingbacks.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                <div class="mb-3 mb-sm-0">
+                                    {{ form.is_sticky(class="form-check-input form-check-input-sm", placeholder="Post Body") }}
+                                    {{ form.is_sticky.label }}
+                                    {% for error in form.is_sticky.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-sm-3 mt-3 ml-auto">
+                            {{ form.submit(class="btn btn-primary btn-user") }}
+                        </div>
+                    </form>
+                    </div>
+                </div>
+              </div>
+          {% endif %}
+      </div>
+
+      {% include 'admin/footer.html' %}
+
+  </div>
+  <!-- End of Content Wrapper -->
+{% endblock content %}

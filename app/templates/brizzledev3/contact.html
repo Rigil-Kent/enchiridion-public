@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="{{ url_for('static', filename='brizzledev/img/bb.png') }}">
+	<meta name="keywords" content="web developer, web designer, freelance, maryland website development, web designer for hire, entrepreneur, baltimore website development, pianist, musician for hire">
+    <meta property="og:url" content="https://www.brizzle.dev">
+    <meta property="og:title" content="Brizzle.dev | Bryan Bailey, Baltimore, Maryland Web Developer">
+    <meta property="og:image" content="https://brizzle.dev{{ url_for('static', filename='brizzle-logo.png') }}">
+    <meta property="og:image:width" content="530">
+    <meta property="og:image:height" content="79">
+    <meta property="fb:app_id" content="206574139389252">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@zetsuboubrizzle" />
+    <meta name="twitter:creator" content="@zetsuboubrizzle" />
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Bryan Bailey Web &amp; Application Developer</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700|Roboto:400,400i,500" rel="stylesheet">
+	<!--
+			CSS
+			============================================= -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='brizzledev/css/linearicons.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='brizzledev/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='brizzledev/css/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='brizzledev/css/magnific-popup.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='brizzledev/css/owl.carousel.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='brizzledev/css/hexagons.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='brizzledev/css/nice-select.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='brizzledev/css/main.css') }}">
+</head>
+
+<body>
+
+	{% include 'brizzledev3/nav.html' %}
+    <!--================Home Banner Area =================-->
+    <section class="banner_area ">
+        <div class="banner_inner overlay d-flex align-items-center">
+            <div class="container">
+                <div class="banner_content text-left">
+                    <div class="page_link">
+                        <a href="{{ url_for('main.index') }}">Home</a>
+                        <a href="{{ url_for('main.contact') }}">Contact</a>
+                    </div>
+                    <h2>Contact <span class="text-primary">Bryan</span></h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Home Banner Area =================-->
+
+    <!--================Contact Area =================-->
+    <section class="contact_area">
+        <div class="container">
+            <div class="embed-responsive embed-responsive-16by9 section-gap">
+                <iframe class="embed-responsive" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12353.195773793399!2d-76.58558161353331!3d39.28147047220999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c8038a31c715cd%3A0xb12e3d38582f6f20!2sCanton%2C+Baltimore%2C+MD!5e0!3m2!1sen!2sus!4v1556202796054!5m2!1sen!2sus" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>          
+            </div>
+            <div class="row mt-2 mb-2">
+                <div class="col-lg-3">
+                    <div class="contact_info">
+                        <div class="info_item">
+                            <i class="lnr lnr-home"></i>
+                            <h6>Baltimore, Maryland</h6>
+                            <p></p>
+                        </div>
+                        <div class="info_item">
+                            <i class="lnr lnr-phone-handset"></i>
+                            <h6><a href="#">(443) 228-6079</a></h6>
+                            <p>Mon to Fri 9am to 6 pm</p>
+                        </div>
+                        <div class="info_item">
+                            <i class="lnr lnr-envelope"></i>
+                            <h6><a href="mailto://bryan.bailey@brizzle.dev">bryan.bailey@brizzle.dev</a></h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <form class="row contact_form" action="" method="post" id="contactForm">
+                        {{ form.hidden_tag() }}
+                        <div class="col-md-6">
+                            
+                            <div class="form-group">
+                                {{ form.name(class='form-control', placeholder='Enter Your Full Name') }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.email(class='form-control', placeholder='Enter Your Email') }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.subject(class='form-control', placeholder='Enter Your Subject') }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form.message(class='form-control', placeholder='Enter Your Message', id="message", rows="1") }}
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-right">
+                            {{ form.contact(class="primary-btn", onclick="disableinput()") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================Contact Area =================-->
+
+    {% include 'brizzledev3/footer.html' %}
+    
+    
+        <script src="{{ url_for('static', filename='brizzledev/js/vendor/jquery-2.2.4.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+         crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename='brizzledev/js/vendor/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='brizzledev/js/jquery.ajaxchimp.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='brizzledev/js/jquery.magnific-popup.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='brizzledev/js/parallax.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='brizzledev/js/owl.carousel.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='brizzledev/js/jquery.nice-select.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='brizzledev/js/jquery.sticky.js') }}"></script>
+        <script src="j{{ url_for('static', filename='brizzledev/s/hexagons.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='brizzledev/js/jquery.counterup.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='brizzledev/js/waypoints.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='brizzledev/js/main.js') }}"></script>
+        {{ moment.include_moment() }}
+
+        <script src="https://cdn.tiny.cloud/1/127p0608815i6uyld4gzbyigq9vrtw6vfp3o3yhrcnkeudef/tinymce/5/tinymce.min.js"></script> 
+    <script>
+    
+    tinymce.init({ 
+      selector: '#pageUpdate',
+      height: 500,
+      menubar: 'insert',
+      plugins: [
+        'advlist autolink lists link image charmap print preview anchor', 'searchreplace visualblocks code', 'insertdatetime image table paste code help wordcount'
+        ],
+      toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | image | bullist numlist outdent indent | removeformat | help',
+      image_list: 'http://localhost:5000/api/media',
+      content_style: 'img {max-width: 100%;}',
+      content_css: [
+        'https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+        'https://www.tiny.cloud/css/codepen.min.css'
+      ],
+      relative_urls: false
+      });</script>
+    </body>
+    
+    </html>

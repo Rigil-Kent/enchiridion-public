@@ -1,0 +1,14 @@
+Thank you {{ name }} for your interest! I will be in contact with you within 24 hours - usually less.
+
+Here are some helpful articles and resources:
+
+https://www.lifewire.com/top-tips-beginner-bloggers-3476318
+https://www.lifewire.com/best-web-hosting-providers-4705940
+https://www.lifewire.com/blog-design-cost-3476207
+https://aws.amazon.com/getting-started/projects/host-static-website/
+
+
+Bryan Bailey
+Web Developer
+bryan.bailey@brizzle.dev
+(443)228-6079

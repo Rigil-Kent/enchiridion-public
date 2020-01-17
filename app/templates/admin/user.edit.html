@@ -1,0 +1,146 @@
+{% extends 'admin/base.html' %}
+{% block content %}
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="maincontent">
+
+      {% include 'admin/topbar.html' %}
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                  {{ message }}
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+          <h1 class="m-0 font-weight-bold">{% if user %} Edit User {{ user.username }} {% else %} New User {% endif %}</h1>
+          
+          
+          {% if user %}
+          <div class="card shadow mb-4">
+                <form class="user" action="" method="POST" enctype=multipart/form-data>
+                    {{ form.hidden_tag() }}
+                <div class="card-header py-2 d-flex justify-content-between">
+                    <div>
+                        <h4 id="blog-post-heading" class="m-0 font-weight-bold text-primary">{{ user.username }}<i class="fas fa-pencil fa-fw"></i></h4>
+                        <small class="text-muted">{{ user.first_name }} {{ user.last_name }}</small>
+                    </div>
+                    
+                    <div class="mb-3 mb-sm-0 ml-auto">
+                        {% if current_user.role.name == "Administrator" %}
+                        {{ form.role(class="form-control form-control-sm", placeholder="Post Title") }}
+                        {% for error in form.role.errors %}
+                            {{ error }}
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0 d-flex justify-content-center">
+                                        <div>
+                                            {{ form.avatar(class="form-control-file form-control-file-sm") }}
+                                            {% for error in form.avatar.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                            <div>
+                                                {% if user.avatar == None %}
+                                                <img src="{{ url_for('static', filename='upload.png') }}">
+                                                {% else %}
+                                                <img src="{{ url_for('static', filename='uploads/' + user.avatar) }}" class="img-fluid">
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    {{ form.email(class="form-control form-control-sm", placeholder="Email") }}
+                                    {% for error in form.email.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="form-check d-flex justify-content-between">
+                                <div class="mb-3 mb-sm-0">
+                                    {{ form.show_display_name(class="form-check-input form-check-input-sm", placeholder="Post Body") }}
+                                    {{ form.show_display_name.label }}
+                                    {% for error in form.show_display_name.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    {{ form.first_name(class="form-control form-control-sm", placeholder="First Name") }}
+                                    {% for error in form.first_name.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    {{ form.last_name(class="form-control form-control-sm", placeholder="Last Name") }}
+                                    {% for error in form.last_name.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm mb-3 mb-sm-0">
+                                    {{ form.website(class="form-control form-control-sm", placeholder="Website") }}
+                                    {% for error in form.website.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                    <div class="col-sm mb-3 mb-sm-0">
+                                        {{ form.bio(class="form-control form-control-sm", placeholder="About Me") }}
+                                        {% for error in form.bio.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                           
+                        </div>
+
+                        <div class="col-sm-6 mt-3 ml-auto">
+                            {{ form.submit(class="btn btn-primary btn-user") }}
+                        </div>
+
+                        
+                    </form>
+                    
+                    </div>
+                    <div class="row mt-3">
+                            <div class="col">
+                            <h4>Latest Downloads</h4>
+                            {% for comic in latest_downloads %}
+                            <img src="{{ url_for('static', filename='download/' + comic.title + '/' + comic.title + ' 000.jpg') }}" class="img-thumbnail" width='150px'>
+                            {% endfor %}
+                            </div>
+                        </div>
+                </div>
+              </div>
+          {% else %}
+          
+          {% endif %}
+      </div>
+
+      {% include 'admin/footer.html' %}
+
+  </div>
+  <!-- End of Content Wrapper -->
+{% endblock content %}
