@@ -36,7 +36,7 @@ itsdangerous==1.1.0
 Jinja2==2.10.3
 jmespath==0.9.4
 kombu==4.6.6
-lxml==4.4.2
+lxml==4.6.2
 Mako==1.1.0
 MarkupSafe==1.1.1
 more-itertools==7.2.0
